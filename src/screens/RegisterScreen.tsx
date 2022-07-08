@@ -1,7 +1,4 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {
   View,
   Platform,
@@ -11,19 +8,15 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import LockIcon from '../assets/Icon/Lock.svg';
-import EmailIcon from '../assets/Icon/Email.svg';
+import {StackScreenProps} from '@react-navigation/stack';
+
 import {WhiteLogo} from '../components/WhiteLogo';
 import {Background} from '../components/Background';
 import {loginStyles} from '../theme/loginTheme';
-// import {WhiteLogo} from '../components/WhiteLogo';
 
-type mainScreenProp = StackNavigationProp<any, 'Main'>;
+interface Props extends StackScreenProps<any, any> {}
 
-export const LoginScreen = () => {
-  // const {signIn, errorMessage, removeError} = useContext(AuthContext);
-  const navigation = useNavigation<mainScreenProp>();
-
+export const RegisterScreen = ({navigation}: Props) => {
   return (
     <>
       <Background />
@@ -37,9 +30,21 @@ export const LoginScreen = () => {
           <WhiteLogo />
 
           <View style={loginStyles.content}>
+            {/* Name */}
+            <View style={loginStyles.inputContainer}>
+              <TextInput
+                placeholder="Name"
+                placeholderTextColor="#828282"
+                style={[
+                  loginStyles.inputField,
+                  Platform.OS === 'ios' && loginStyles.inputFieldIOS,
+                ]}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
             {/* Input Email */}
             <View style={loginStyles.inputContainer}>
-              <EmailIcon width={22} height={22} />
               <TextInput
                 placeholder="Email"
                 keyboardType="email-address"
@@ -55,11 +60,25 @@ export const LoginScreen = () => {
 
             {/* Input Password */}
             <View style={loginStyles.inputContainer}>
-              <LockIcon width={22} height={22} />
               <TextInput
                 placeholder="Password"
-                placeholderTextColor="#828282"
                 secureTextEntry
+                placeholderTextColor="#828282"
+                style={[
+                  loginStyles.inputField,
+                  Platform.OS === 'ios' && loginStyles.inputFieldIOS,
+                ]}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
+
+            {/* Input Confirm Password */}
+            <View style={loginStyles.inputContainer}>
+              <TextInput
+                placeholder="Password"
+                secureTextEntry
+                placeholderTextColor="#828282"
                 style={[
                   loginStyles.inputField,
                   Platform.OS === 'ios' && loginStyles.inputFieldIOS,
@@ -71,19 +90,11 @@ export const LoginScreen = () => {
 
             {/* Boton login */}
             <View style={loginStyles.buttonContainer}>
-              <TouchableOpacity activeOpacity={0.8} style={loginStyles.button}>
-                <Text style={loginStyles.buttonText}>Log In</Text>
-              </TouchableOpacity>
-            </View>
-
-            {/* Crear una nueva cuenta */}
-            <View style={loginStyles.newUserContainer}>
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => navigation.navigate('Register')}>
-                <Text style={loginStyles.createUserText}>
-                  Create an account
-                </Text>
+                style={loginStyles.button}
+                onPress={() => navigation.replace('RegisterScreen')}>
+                <Text style={loginStyles.buttonText}>Create account</Text>
               </TouchableOpacity>
             </View>
           </View>

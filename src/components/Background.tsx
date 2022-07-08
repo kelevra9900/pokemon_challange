@@ -1,16 +1,16 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 export const Background = () => {
-  return (
-    <View
-      style={{
-        position: 'absolute',
-        backgroundColor: '#111111',
-        top: -250,
-        width: 1000,
-        height: 1200,
-      }}
-    />
-  );
+  return <View style={styles.container} />;
 };
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    backgroundColor: '#111111',
+    top: -250,
+    width: 1000,
+    height: 1200,
+  },
+});
