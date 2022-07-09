@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {
   View,
   Platform,
@@ -8,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
+  Alert,
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/native';
@@ -26,18 +28,32 @@ import {useForm} from '../hooks/useForm';
 type mainScreenProp = StackNavigationProp<any, 'Main'>;
 
 export const LoginScreen = () => {
-  const {signIn} = useContext(AuthContext);
+  const {signIn, errorMessage, removeError} = useContext(AuthContext);
 
-  const navigation = useNavigation<mainScreenProp>();
   const {email, password, onChange} = useForm({
     email: '',
     password: '',
   });
 
-  function handleLogin() {
+  const navigation = useNavigation<mainScreenProp>();
+
+  useEffect(() => {
+    if (errorMessage.length === 0) {
+      return;
+    }
+
+    Alert.alert('Login incorrecto', errorMessage, [
+      {
+        text: 'Ok',
+        onPress: removeError,
+      },
+    ]);
+  }, [errorMessage]);
+
+  const handleLogin = () => {
     Keyboard.dismiss();
-    signIn({email: email, password: password});
-  }
+    signIn({email, password});
+  };
 
   return (
     <>

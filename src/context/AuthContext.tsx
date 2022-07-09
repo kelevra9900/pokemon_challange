@@ -1,12 +1,15 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {createContext, useEffect, useReducer} from 'react';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
-import {User, RegisterData, LoginData} from '../interfaces';
+import restApi from '../api';
+
+import {User, RegisterData, LoginData, UserClass} from '../interfaces';
 import {authReducer, AuthState} from './AuthReducer';
 
 type AuthContextProps = {
   errorMessage: string;
   token: string | null;
-  user: User | null;
+  user: UserClass | null;
   status: 'checking' | 'authenticated' | 'not-authenticated';
   signUp: (registerData: RegisterData) => void;
   signIn: (loginData: LoginData) => void;
@@ -32,42 +35,45 @@ export const AuthProvider = ({children}: any) => {
 
   const checkToken = async () => {
     // No token, no autenticado
-    // await AsyncStorage.setItem('token', JSON.stringify('token'));
-    // if (!token) return dispatch({type: 'notAuthenticated'});
+    const token = await AsyncStorage.getItem('token');
+    const user = await AsyncStorage.getItem('user');
+    if (!token && !user) {
+      return dispatch({type: 'notAuthenticated'});
+    }
     // Hay token
-    // const resp = await cafeApi.get('/auth');
-    // if (resp.status !== 200) {
-    //   return dispatch({type: 'notAuthenticated'});
-    // }
-    // await AsyncStorage.setItem('token', resp.data.token);
-    // dispatch({
-    //   type: 'signUp',
-    //   payload: {
-    //     token: resp.data.token,
-    //     user: resp.data.usuario,,
-    //   },
-    // });
+    dispatch({
+      type: 'signUp',
+      payload: {
+        token: token!,
+        user: JSON.parse(user!) as UserClass,
+      },
+    });
   };
 
   const signIn = async ({email, password}: LoginData) => {
-    console.log('signIn', email, password);
-    // try {
-    //         const { data } = await cafeApi.post<LoginResponse>('/auth/login', { correo, password } );
-    //   });
-    //   dispatch({
-    //     type: 'signUp',
-    //     payload: {
-    //       token: data.token,
-    //       user: data.usuario,,
-    //     },,
-    //   });
-    //   await AsyncStorage.setItem('token', data.token);
-    // } catch (error) {
-    //   dispatch({
-    //     type: 'addError',
-    //     payload: error.response.data.msg || 'Información incorrecta',,
-    //   });
-    // }
+    try {
+      const {data} = await restApi.post<User>('/login', {
+        email,
+        password,
+      });
+      console.log('signIn', data);
+      dispatch({
+        type: 'signUp',
+        payload: {
+          token: data.access_token,
+          user: data.user,
+        },
+      });
+      await AsyncStorage.setItem('token', data.access_token);
+      await AsyncStorage.setItem('user', JSON.stringify(data.user));
+    } catch (error: any) {
+      dispatch({
+        type: 'addError',
+        payload:
+          error.response.data.errors.email[0] ||
+          'The selected email is invalid',
+      });
+    }
   };
 
   const signUp = async ({name, email, password}: RegisterData) => {
@@ -92,7 +98,7 @@ export const AuthProvider = ({children}: any) => {
   };
 
   const logOut = async () => {
-    // await AsyncStorage.removeItem('token');
+    await AsyncStorage.removeItem('token');
     dispatch({type: 'logout'});
   };
 

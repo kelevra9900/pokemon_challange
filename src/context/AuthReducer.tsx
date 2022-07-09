@@ -1,14 +1,14 @@
-import {User} from '../interfaces';
+import {UserClass} from '../interfaces';
 
 export interface AuthState {
   status: 'checking' | 'authenticated' | 'not-authenticated';
   token: string | null;
   errorMessage: string;
-  user: User | null;
+  user: UserClass | null;
 }
 
 type AuthAction =
-  | {type: 'signUp'; payload: {token: string; user: User}}
+  | {type: 'signUp'; payload: {token: string; user: UserClass}}
   | {type: 'addError'; payload: string}
   | {type: 'removeError'}
   | {type: 'notAuthenticated'}

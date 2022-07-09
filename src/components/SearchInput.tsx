@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
-import {Platform, StyleSheet, View, StyleProp, ViewStyle} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  StyleProp,
+  ViewStyle,
+  Platform,
+} from 'react-native';
 import SearchIcon from '../assets/Icon/Search.svg';
 import UserIcon from '../assets/Icon/User.svg';
+import {InputComponent} from './ui/Input';
 
 interface Props {
   onDebounce: (value: string) => void;
@@ -11,24 +18,25 @@ interface Props {
 
 export const SearchInput = ({style}: Props) => {
   const [textValue, setTextValue] = useState('');
+
   return (
     <View
       style={{
         ...styles.container,
         ...(style as any),
       }}>
-      <UserIcon height={40} width={40} />
-      <View>
-        <TextInput
-          placeholder="Buscar..."
-          style={{
-            ...styles.textInput,
-            top: Platform.OS === 'ios' ? 0 : 2,
-          }}
+      <View style={styles.item}>
+        <InputComponent
+          placeholder="Search"
+          placeholderTextColor="#828282"
           value={textValue}
-          onChangeText={setTextValue}
+          icon={<SearchIcon width={22} height={22} />}
         />
-        <SearchIcon width={22} height={22} />
+      </View>
+      <View style={styles.button}>
+        <TouchableOpacity>
+          <UserIcon />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -36,27 +44,25 @@ export const SearchInput = ({style}: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: 'red'
-  },
-  textBackground: {
-    backgroundColor: '#F3F1F3',
-    borderRadius: 6,
-    marginTop: 20,
-    height: 40,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-    flexDirection: 'row',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  textInput: {
     flex: 1,
-    fontSize: 18,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    paddingHorizontal: 20,
+  },
+  button: {
+    width: 44,
+    height: 44,
+    borderRadius: 8,
+    backgroundColor: '#363636',
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+    top: Platform.OS === 'ios' ? 17 : 0,
+  },
+  item: {
+    height: 20,
+    width: '100%',
   },
 });
