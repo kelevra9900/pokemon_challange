@@ -8,6 +8,7 @@ import {AuthContext} from '../context/AuthContext';
 import {LoadingScreen} from '../screens/LoadingScreen';
 import {ProfileScreen} from '../screens/ProfileScreen';
 import {SearchScreen} from '../screens/SearchScreen';
+import {PokemonDetailScreen} from '../screens/PokemonDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,7 @@ export const Navigator = () => {
         <>
           {/* <Stack.Screen name="SplashScreen" component={SplashScreen} /> */}
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Pokemon" component={PokemonDetailScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
           <Stack.Screen name="Search" component={SearchScreen} />
         </>

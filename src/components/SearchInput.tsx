@@ -6,7 +6,6 @@ import {
   View,
   StyleProp,
   ViewStyle,
-  Platform,
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/native';
@@ -47,7 +46,7 @@ export const SearchInput = ({style, onDebounce}: Props) => {
           autoCorrect={false}
           value={textValue}
           onChangeText={setTextValue}
-          onSubmitEditing={() => navigation.navigate('Search')}
+          onSubmitEditing={() => navigation.push('Search')}
           icon={<SearchIcon width={22} height={22} />}
         />
       </View>
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 10,
-    top: Platform.OS === 'ios' ? 17 : 0,
+    top: 18,
   },
   item: {
     height: 20,

@@ -14,9 +14,10 @@ import {useAnimation} from '../../hooks/useAnimation';
 interface Props {
   uri: string;
   style?: StyleProp<ImageStyle>;
+  blur?: number;
 }
 
-export const FadeInImage = ({uri, style = {}}: Props) => {
+export const FadeInImage = ({uri, style = {}, blur}: Props) => {
   const {opacity, fadeIn} = useAnimation();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -49,6 +50,7 @@ export const FadeInImage = ({uri, style = {}}: Props) => {
         onError={onError}
         onLoad={finishLoading}
         resizeMode="contain"
+        blurRadius={blur}
         style={{
           ...(style as any),
           opacity,

@@ -44,6 +44,12 @@ export const authReducer = (
       };
 
     case 'logout':
+      return {
+        ...state,
+        status: 'not-authenticated',
+        token: null,
+        user: null,
+      };
     case 'notAuthenticated':
       return {
         ...state,

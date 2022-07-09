@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    width: '100%',
   },
   input: {
     marginLeft: 5,

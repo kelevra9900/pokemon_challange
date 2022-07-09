@@ -34,7 +34,8 @@ export const HomeScreen = () => {
       />
       <FlatList
         style={{
-          top: 120,
+          top: 100,
+          marginHorizontal: 10,
         }}
         data={simplePokemonList}
         keyExtractor={pokemon => pokemon?.id?.toString()}

@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/core';
 import {
   View,
   TouchableOpacity,
@@ -12,14 +13,21 @@ import {Pokemon} from '../interfaces';
 import {FadeInImage} from './ui/FadeImage';
 
 const windowWidth = Dimensions.get('window').width;
-
 type Props = {
   pokemon: Pokemon;
 };
 export const PokemonCard = ({pokemon}: Props) => {
+  const navigation: any = useNavigation();
   return (
     <View style={styles.main}>
-      <TouchableOpacity activeOpacity={0.9}>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() =>
+          navigation.navigate('Pokemon', {
+            simplePokemon: pokemon,
+            color: 'grey',
+          })
+        }>
         <Image
           resizeMode="cover"
           source={{uri: pokemon.image}}
@@ -58,15 +66,6 @@ const styles = StyleSheet.create({
     height: 190,
     width: 175,
     marginBottom: 25,
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   textContent: {
     alignItems: 'center',

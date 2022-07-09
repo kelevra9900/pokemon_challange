@@ -1,21 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  Dimensions,
-  FlatList,
-  Platform,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, FlatList, Platform, StyleSheet} from 'react-native';
+import {Searchbar} from 'react-native-paper';
+
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {SearchInput} from '../components/SearchInput';
+import SearchIcon from '../assets/Icon/Search.svg';
+import { ListPokemon } from '../components/ListPokemon';
+
 import {Loading} from '../components/ui/Loading';
 import {usePokemonSearch} from '../hooks/usePokemonSearch';
 import {Pokemon} from '../interfaces/index';
-
-const screenWidth = Dimensions.get('window').width;
 
 export const SearchScreen = () => {
   const {top} = useSafeAreaInsets();
@@ -49,17 +44,17 @@ export const SearchScreen = () => {
   if (isFetching) {
     return <Loading />;
   }
+  const onChangeSearch = (query: string) => setTerm(query);
+
   return (
     <View style={styles.main}>
-      <SearchInput
-        onDebounce={value => setTerm(value)}
-        style={{
-          position: 'absolute',
-          zIndex: 999,
-          width: screenWidth - 40,
-          top: Platform.OS === 'ios' ? top : top + 30,
-        }}
-      />
+      <View>
+        <Searchbar
+          placeholder="Search"
+          onChangeText={onChangeSearch}
+          value={term}
+        />
+      </View>
 
       <FlatList
         data={pokemonFiltered}
@@ -78,7 +73,7 @@ export const SearchScreen = () => {
             {term}
           </Text>
         }
-        renderItem={({item}: any) => <Text>{item.name}</Text>}
+        renderItem={({item}: any) => <ListPokemon pokemon={item} />}
       />
     </View>
   );
@@ -87,6 +82,8 @@ export const SearchScreen = () => {
 export const styles = StyleSheet.create({
   main: {
     flex: 1,
+    backgroundColor: '#111111',
+    paddingHorizontal: 16,
   },
   globalMargin: {
     marginHorizontal: 20,
