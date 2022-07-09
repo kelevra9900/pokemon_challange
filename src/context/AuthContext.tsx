@@ -34,7 +34,7 @@ export const AuthProvider = ({children}: any) => {
   }, []);
 
   const checkToken = async () => {
-    // No token, no autenticado
+    // Chck if token is in storage
     const token = await AsyncStorage.getItem('token');
     const user = await AsyncStorage.getItem('user');
     if (!token && !user) {
@@ -56,7 +56,6 @@ export const AuthProvider = ({children}: any) => {
         email,
         password,
       });
-      console.log('signIn', data);
       dispatch({
         type: 'signUp',
         payload: {
@@ -76,25 +75,40 @@ export const AuthProvider = ({children}: any) => {
     }
   };
 
-  const signUp = async ({name, email, password}: RegisterData) => {
-    console.log('signUp', name, email, password);
-    // try {
-    //         const { data } = await cafeApi.post<LoginResponse>('/usuarios', { correo, password, nombre } );
-    //   });
-    //   dispatch({
-    //     type: 'signUp',
-    //     payload: {
-    //       token: data.token,
-    //       user: data.usuario,,
-    //     },,
-    //   });
-    //   await AsyncStorage.setItem('token', data.token);
-    // } catch (error) {
-    //   dispatch({
-    //     type: 'addError',
-    //     payload: error.response.data.errors[0].msg || 'Revise la información',,
-    //   });
-    // }
+  const signUp = async ({
+    name,
+    email,
+    password,
+    password_confirmation,
+  }: RegisterData) => {
+    try {
+      const {data} = await restApi.post<User>('/register', {
+        name,
+        email,
+        password,
+        password_confirmation,
+      });
+      dispatch({
+        type: 'signUp',
+        payload: {
+          token: data.access_token,
+          user: data.user,
+        },
+      });
+
+      await AsyncStorage.setItem('token', data.access_token);
+      await AsyncStorage.setItem('user', JSON.stringify(data.user));
+    } catch (error: any) {
+      dispatch({
+        type: 'addError',
+        payload:
+          error.response.data?.errors?.password[0] ||
+          error.response.data?.errors?.password[1] ||
+          error.response.data?.errors?.password[2] ||
+          error.response.data?.errors?.email[0] ||
+          'Revise la información',
+      });
+    }
   };
 
   const logOut = async () => {

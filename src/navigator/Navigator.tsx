@@ -6,6 +6,8 @@ import {RegisterScreen} from '../screens/RegisterScreen';
 // import {SplashScreen} from '../screens/SplashScreen';
 import {AuthContext} from '../context/AuthContext';
 import {LoadingScreen} from '../screens/LoadingScreen';
+import {ProfileScreen} from '../screens/ProfileScreen';
+import {SearchScreen} from '../screens/SearchScreen';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +35,8 @@ export const Navigator = () => {
         <>
           {/* <Stack.Screen name="SplashScreen" component={SplashScreen} /> */}
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
         </>
       )}
     </Stack.Navigator>

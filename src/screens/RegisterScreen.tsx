@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect, useContext} from 'react';
 import {
   View,
   Platform,
@@ -6,24 +7,48 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  Alert,
+  Keyboard,
 } from 'react-native';
-import {StackScreenProps} from '@react-navigation/stack';
 
 import WhiteLogo from '../components/WhiteLogo';
 import {Background} from '../components/Background';
 import {loginStyles} from '../theme/loginTheme';
 import {InputComponent} from '../components/ui/Input';
 import {useForm} from '../hooks/useForm';
+import {AuthContext} from '../context/AuthContext';
 
-interface Props extends StackScreenProps<any, any> {}
-
-export const RegisterScreen = ({navigation}: Props) => {
-  const {name, email, password, confirmPassword, onChange} = useForm({
+export const RegisterScreen = () => {
+  const {signUp, errorMessage, removeError} = useContext(AuthContext);
+  const {name, email, password, password_confirmation, onChange} = useForm({
     name: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    password_confirmation: '',
   });
+
+  useEffect(() => {
+    if (errorMessage.length === 0) {
+      return;
+    }
+
+    Alert.alert('Registro incorrecto', errorMessage, [
+      {
+        text: 'Ok',
+        onPress: removeError,
+      },
+    ]);
+  }, [errorMessage]);
+
+  const onRegister = () => {
+    Keyboard.dismiss();
+    signUp({
+      name,
+      email,
+      password,
+      password_confirmation,
+    });
+  };
 
   return (
     <>
@@ -43,7 +68,7 @@ export const RegisterScreen = ({navigation}: Props) => {
               value={name}
               placeholder="Name"
               placeholderTextColor="#828282"
-              onChangeText={(value: string) => onChange(value, 'email')}
+              onChangeText={(value: string) => onChange(value, 'name')}
               autoCorrect={false}
             />
             {/* Input Email */}
@@ -59,17 +84,21 @@ export const RegisterScreen = ({navigation}: Props) => {
             <InputComponent
               value={password}
               placeholder="Password"
+              secureTextEntry={true}
               placeholderTextColor="#828282"
-              onChangeText={(value: string) => onChange(value, 'email')}
+              onChangeText={(value: string) => onChange(value, 'password')}
               autoCorrect={false}
             />
 
             {/* Input Confirm Password */}
             <InputComponent
-              value={confirmPassword}
+              value={password_confirmation}
               placeholder="Confirm Password"
+              secureTextEntry={true}
               placeholderTextColor="#828282"
-              onChangeText={(value: string) => onChange(value, 'email')}
+              onChangeText={(value: string) =>
+                onChange(value, 'password_confirmation')
+              }
               autoCorrect={false}
             />
 
@@ -78,7 +107,7 @@ export const RegisterScreen = ({navigation}: Props) => {
               <TouchableOpacity
                 activeOpacity={0.8}
                 style={loginStyles.button}
-                onPress={() => navigation.replace('RegisterScreen')}>
+                onPress={onRegister}>
                 <Text style={loginStyles.buttonText}>Create account</Text>
               </TouchableOpacity>
             </View>

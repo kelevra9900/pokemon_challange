@@ -6,6 +6,7 @@ export interface LoginData {
 export interface RegisterData {
   email: string;
   password: string;
+  password_confirmation: string;
   name: string;
 }
 
@@ -48,7 +49,7 @@ export interface PokemonsResponse {
 }
 
 export interface Pokemon {
-  id: number;
+  id: number | string;
   image: string;
   name: string;
   detailsUrl: string;

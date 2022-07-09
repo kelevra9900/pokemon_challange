@@ -10,7 +10,6 @@ export const usePokemons = () => {
   const url = useRef('https://challenge.butchershop.co/api/v1/pokemons');
 
   const loadPokemons = async () => {
-    console.log('url', url.current);
     setIsLoading(true);
     const resp = await restApi.get<PokemonsResponse>(url.current);
     url.current = resp.data.next;
@@ -18,17 +17,15 @@ export const usePokemons = () => {
   };
 
   const mapPokemonList = (pokemonList: Pokemon[]) => {
-    console.log('lista', pokemonList);
-    setSimplePokemonList(pokemonList);
-    // const newPokemonList: Pokemon[] = pokemonList.map(({name, detailsUrl}) => {
-    //   const urlParts = detailsUrl.split('/');
-    //   const id = urlParts[urlParts.length - 2];
-    //   const picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+    const newPokemonList: Pokemon[] = pokemonList.map(({name, detailsUrl}) => {
+      const urlParts = detailsUrl.split('/');
+      const id: string = urlParts[urlParts.length - 2];
+      const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
-    //   return {id, picture, name};
-    // });
+      return {id, image, name, detailsUrl};
+    });
 
-    // setSimplePokemonList([...simplePokemonList, ...newPokemonList]);
+    setSimplePokemonList([...simplePokemonList, ...newPokemonList]);
     setIsLoading(false);
   };
 
