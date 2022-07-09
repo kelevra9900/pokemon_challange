@@ -8,36 +8,22 @@ import App from '../App';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import {LoginScreen} from '../src/screens/LoginScreen';
-import {NativeModules} from 'react-native';
 
-NativeModules.RNGestureHandlerModule = {
-  attachGestureHandler: jest.fn(),
-  createGestureHandler: jest.fn(),
-  dropGestureHandler: jest.fn(),
-  updateGestureHandler: jest.fn(),
-  forceTouchAvailable: jest.fn(),
-  State: {},
-  Directions: {},
-};
+// const mockedNavigate = jest.fn();
 
-NativeModules.PlatformConstants = {
-  forceTouchAvailable: false,
-};
-
-NativeModules.UIManager = {
-  RCTView: () => ({
-    directEventTypes: {},
-  }),
-};
-
-it('renders correctly', () => {
-  renderer.create(<App />);
-});
+// jest.mock('@react-navigation/native', () => {
+//   const actualNav = jest.requireActual('@react-navigation/native');
+//   return {
+//     ...actualNav,
+//     useNavigation: () => ({
+//       navigate: mockedNavigate,
+//     }),
+//   };
+// });
 
 describe('When Login render', () => {
   it('renders correctly', () => {
-    const tree = renderer.create(<LoginScreen />).toJSON();
-    expect(tree).toMatchSnapshot();
+    renderer.create(<App />).toJSON();
+    expect(renderer.create(<App />)).toMatchSnapshot();
   });
 });

@@ -2,13 +2,13 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import Logo from '../assets/logo.svg';
 
-export const WhiteLogo = () => {
+function WhiteLogo() {
   return (
     <View style={styles.container}>
-      <Logo width={204} height={38} />
+      <Logo width={204} height={38} style={styles.container} />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -17,3 +17,5 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
 });
+
+export default WhiteLogo;
