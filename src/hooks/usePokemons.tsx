@@ -6,13 +6,20 @@ import restApi from '../api';
 export const usePokemons = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [simplePokemonList, setSimplePokemonList] = useState<Pokemon[]>([]);
-  // const nextPageUrl = useRef('https://pokeapi.co/api/v2/pokemon?limit=40');
-  const url = useRef('https://challenge.butchershop.co/api/v1/pokemons');
+  const url = useRef(
+    'https://challenge.butchershop.co/api/v1/pokemons?limit=40',
+  );
 
   const loadPokemons = async () => {
     setIsLoading(true);
     const resp = await restApi.get<PokemonsResponse>(url.current);
-    url.current = resp.data.next;
+    let api = 'https://challenge.butchershop.co/api/v1/pokemons';
+    let newUrl = resp.data.next.replace(
+      'https://pokeapi.co/api/v2/pokemon',
+      '',
+    );
+    api += newUrl;
+    url.current = api;
     mapPokemonList(resp.data.results);
   };
 

@@ -17,6 +17,7 @@ import {Loading} from '../components/ui/Loading';
 import {usePokemonSearch} from '../hooks/usePokemonSearch';
 import {Pokemon} from '../interfaces/index';
 import SearchIcon from '../assets/Icon/Search.svg';
+import {EmptySearch} from '../components/EmptySearch';
 
 export const SearchScreen = () => {
   const {top} = useSafeAreaInsets();
@@ -72,7 +73,7 @@ export const SearchScreen = () => {
       </View>
 
       {term === '' ? (
-        <Text>Search pokemons by name or by number</Text>
+        <EmptySearch />
       ) : (
         <FlatList
           data={pokemonFiltered}

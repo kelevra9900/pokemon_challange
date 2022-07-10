@@ -113,6 +113,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: 130,
     backgroundColor: 'rgba(44, 44, 44, 0.5)',
+    borderColor: '#2c2c2c',
+    borderWidth: 1,
   },
   title: {
     fontSize: 18,

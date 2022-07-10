@@ -49,7 +49,7 @@ export interface PokemonsResponse {
 }
 
 export interface Pokemon {
-  id: number;
+  id: number | string;
   image: string;
   name: string;
   detailsUrl: string;
