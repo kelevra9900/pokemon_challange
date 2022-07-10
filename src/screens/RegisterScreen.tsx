@@ -47,7 +47,7 @@ export const RegisterScreen = () => {
     };
   }, []);
   useEffect(() => {
-    if (errorMessage.length === 0) {
+    if (errorMessage?.length === 0) {
       return;
     }
     Alert.alert('Registro incorrecto', errorMessage, [

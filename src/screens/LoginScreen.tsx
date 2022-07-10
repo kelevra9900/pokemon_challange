@@ -38,7 +38,7 @@ export const LoginScreen = () => {
   const navigation = useNavigation<mainScreenProp>();
 
   useEffect(() => {
-    if (errorMessage.length === 0) {
+    if (errorMessage?.length === 0) {
       return;
     }
 
@@ -76,6 +76,7 @@ export const LoginScreen = () => {
               value={email}
               onSubmitEditing={handleLogin}
               autoCorrect={false}
+              testID="email-input"
             />
 
             {/* Input Password */}
@@ -88,6 +89,7 @@ export const LoginScreen = () => {
               value={password}
               onSubmitEditing={handleLogin}
               icon={<LockIcon width={22} height={22} />}
+              testID="password-input"
             />
 
             {/* login button */}
@@ -95,13 +97,17 @@ export const LoginScreen = () => {
               <TouchableOpacity
                 activeOpacity={0.8}
                 style={loginStyles.button}
+                testID="login-button"
                 onPress={handleLogin}>
                 <Text style={loginStyles.buttonText}>Log In</Text>
               </TouchableOpacity>
             </View>
 
             {/* Crear una nueva cuenta */}
-            <Button onPress={() => navigation.push('Register')} />
+            <Button
+              testID="navigate-to-register"
+              onPress={() => navigation.push('Register')}
+            />
           </View>
         </SafeAreaView>
       </KeyboardAvoidingView>

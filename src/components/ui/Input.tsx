@@ -11,12 +11,13 @@ type Props = {
   onSubmitEditing?: any;
   value: string;
   styles?: any;
+  testID?: string;
 };
 export const InputComponent = (props: Props) => {
   return (
     <View style={styles.container} {...props.styles}>
       {props.icon}
-      <TextInput {...props} style={styles.input} />
+      <TextInput {...props} style={styles.input} testID={props.testID} />
     </View>
   );
 };

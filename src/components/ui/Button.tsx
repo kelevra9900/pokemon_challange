@@ -2,13 +2,14 @@ import React from 'react';
 import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
 
 type Props = {
-  onPress: any;
+  onPress: () => void;
+  testID?: string;
 };
 
-export const Button = ({onPress}: Props) => {
+export const Button = ({onPress, testID}: Props) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
+      <TouchableOpacity activeOpacity={0.8} onPress={onPress} testID={testID}>
         <Text style={styles.text}>Create an account</Text>
       </TouchableOpacity>
     </View>
