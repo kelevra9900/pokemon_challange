@@ -101,7 +101,7 @@ export const LoginScreen = () => {
             </View>
 
             {/* Crear una nueva cuenta */}
-            <Button onPress={() => navigation.navigate('Register')} />
+            <Button onPress={() => navigation.push('Register')} />
           </View>
         </SafeAreaView>
       </KeyboardAvoidingView>

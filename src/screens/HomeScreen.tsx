@@ -45,7 +45,7 @@ export const HomeScreen = () => {
         onEndReached={loadPokemons}
         onEndReachedThreshold={0.4}
         ListFooterComponent={
-          <ActivityIndicator style={{height: 100}} size={20} color="grey" />
+          <ActivityIndicator style={{height: 100}} size={120} color="white" />
         }
       />
     </View>

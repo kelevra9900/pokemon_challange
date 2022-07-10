@@ -16,12 +16,10 @@ export const SplashScreen = () => {
   useEffect(() => {
     let time: any;
     if (status === 'not-authenticated') {
-      console.log('Not authenticated');
       time = setTimeout(() => {
         navigation.replace('Login');
       }, 3000);
     } else {
-      console.log('Authenticated');
       time = setTimeout(() => {
         navigation.replace('Home');
       }, 3000);

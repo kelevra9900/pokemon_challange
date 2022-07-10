@@ -1,13 +1,16 @@
 import {StyleSheet} from 'react-native';
 
 export const loginStyles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: '#111111',
+  },
   formContainer: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     justifyContent: 'center',
     marginHorizontal: 16,
     height: 600,
-    marginBottom: 50,
   },
   content: {
     flex: 1,
@@ -85,5 +88,9 @@ export const loginStyles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 6,
+  },
+  backButton: {
+    color: 'white',
+    marginTop: 10,
   },
 });

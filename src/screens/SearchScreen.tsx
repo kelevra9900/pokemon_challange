@@ -32,8 +32,6 @@ export const SearchScreen = () => {
       return setPokemonFiltered([]);
     }
 
-    console.log(isNaN(Number(term)));
-
     if (isNaN(Number(term))) {
       setPokemonFiltered(
         simplePokemonList.filter(poke =>
