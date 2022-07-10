@@ -19,7 +19,6 @@ import {AuthContext} from '../context/AuthContext';
 import LockIcon from '../assets/Icon/Lock.svg';
 import EmailIcon from '../assets/Icon/Email.svg';
 import WhiteLogo from '../components/WhiteLogo';
-import {Background} from '../components/Background';
 import {loginStyles} from '../theme/loginTheme';
 import {Button} from '../components/ui/Button';
 import {InputComponent} from '../components/ui/Input';
@@ -56,9 +55,7 @@ export const LoginScreen = () => {
   };
 
   return (
-    <>
-      <Background />
-
+    <View testID="login-page">
       <KeyboardAvoidingView
         style={{flex: 1}}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -111,6 +108,6 @@ export const LoginScreen = () => {
           </View>
         </SafeAreaView>
       </KeyboardAvoidingView>
-    </>
+    </View>
   );
 };

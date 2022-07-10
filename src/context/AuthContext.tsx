@@ -17,14 +17,14 @@ type AuthContextProps = {
   removeError: () => void;
 };
 
+export const AuthContext = createContext({} as AuthContextProps);
+
 const authInicialState: AuthState = {
   status: 'checking',
   token: null,
   user: null,
   errorMessage: '',
 };
-
-export const AuthContext = createContext({} as AuthContextProps);
 
 export const AuthProvider = ({children}: any) => {
   const [state, dispatch] = useReducer(authReducer, authInicialState);

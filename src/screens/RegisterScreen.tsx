@@ -69,7 +69,7 @@ export const RegisterScreen = () => {
   };
 
   return (
-    <View style={loginStyles.main}>
+    <View style={loginStyles.main} testID="register-screen">
       <KeyboardAvoidingView
         style={loginStyles.formContainer}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>

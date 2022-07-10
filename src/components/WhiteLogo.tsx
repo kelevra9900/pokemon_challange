@@ -5,7 +5,12 @@ import Logo from '../assets/logo.svg';
 function WhiteLogo() {
   return (
     <View style={styles.container}>
-      <Logo width={204} height={38} style={styles.container} />
+      <Logo
+        width={204}
+        height={38}
+        style={styles.container}
+        testID="logo-image"
+      />
     </View>
   );
 }

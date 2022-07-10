@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {useEffect, useState} from 'react';
 import butcherApi from '../api';
 
@@ -10,7 +9,7 @@ export const usePokemonSearch = () => {
 
   const loadPokemons = async () => {
     const resp = await butcherApi.get<PokemonsResponse>(
-      'https://challenge.butchershop.co/api/v1/pokemons',
+      'https://challenge.butchershop.co/api/v1/pokemons?limit=120',
     );
     setSimplePokemonList(resp.data.results);
     setIsFetching(false);
