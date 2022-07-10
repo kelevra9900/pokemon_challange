@@ -4,28 +4,23 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
   ActivityIndicator,
   Image,
+  TouchableOpacity,
 } from 'react-native';
-import {StackScreenProps} from '@react-navigation/stack';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {StackScreenProps} from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {usePokemon} from '../hooks/useSinglePokemon';
-import {Pokemon} from '../interfaces';
-import BackIcon from '../assets/Icon/Chevron-Left.svg';
+// import BackIcon from '../assets/Icon/Chevron-Left.svg';
 import {FadeInImage} from '../components/ui/FadeImage';
 import {PokemonDetails} from '../components/PokemonDetail';
 
-export type RootParams = {
-  HomeScreen: undefined;
-  Pokemon: {simplePokemon: Pokemon; color: string};
-};
+interface Props extends StackScreenProps<any, 'Pokemon'> {}
 
-interface Props extends StackScreenProps<RootParams, 'Pokemon'> {}
-
-export const PokemonDetailScreen = ({navigation, route}: Props) => {
-  const {simplePokemon, color} = route.params;
+export const PokemonDetailScreen = ({route, navigation}: Props) => {
+  const {simplePokemon, color} = route.params as any;
   const {id, name} = simplePokemon;
   const {top} = useSafeAreaInsets();
 
@@ -33,10 +28,11 @@ export const PokemonDetailScreen = ({navigation, route}: Props) => {
 
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
-      {/* Heade Containerr */}
+      {/* Head Containerr */}
       <View
         style={{
           backgroundColor: 'black',
+          zIndex: 1,
         }}>
         {/* Backbutton */}
         <TouchableOpacity
@@ -46,7 +42,7 @@ export const PokemonDetailScreen = ({navigation, route}: Props) => {
             ...styles.backButton,
             top: top + 10,
           }}>
-          <BackIcon stroke={'white'} />
+          <Icon name="angle-left" size={45} color="#fff" />
         </TouchableOpacity>
 
         <View style={styles.pokemonContent}>
@@ -104,6 +100,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
+    zIndex: 1,
     left: 20,
   },
   pokemonName: {

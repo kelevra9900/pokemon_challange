@@ -28,7 +28,7 @@ export const HomeScreen = () => {
       }}>
       <SearchInput
         style={{
-          width: screenWidth - 40,
+          width: screenWidth - 51,
           top: Platform.OS === 'ios' ? top : top + 30,
         }}
       />

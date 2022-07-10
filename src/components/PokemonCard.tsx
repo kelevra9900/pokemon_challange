@@ -1,3 +1,4 @@
+/* eslint-disale react-hooks/exhaustive-deps */
 import React from 'react';
 import {useNavigation} from '@react-navigation/core';
 import {
@@ -8,7 +9,6 @@ import {
   Text,
   Image,
 } from 'react-native';
-
 import {Pokemon} from '../interfaces';
 import {FadeInImage} from './ui/FadeImage';
 
@@ -18,6 +18,7 @@ type Props = {
 };
 export const PokemonCard = ({pokemon}: Props) => {
   const navigation: any = useNavigation();
+
   return (
     <View style={styles.main}>
       <TouchableOpacity
@@ -25,7 +26,7 @@ export const PokemonCard = ({pokemon}: Props) => {
         onPress={() =>
           navigation.navigate('Pokemon', {
             simplePokemon: pokemon,
-            color: 'grey',
+            color: '#111111',
           })
         }>
         <Image

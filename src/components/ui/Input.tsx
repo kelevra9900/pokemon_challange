@@ -10,10 +10,11 @@ type Props = {
   onChangeText?: any;
   onSubmitEditing?: any;
   value: string;
+  styles?: any;
 };
 export const InputComponent = (props: Props) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} {...props.styles}>
       {props.icon}
       <TextInput {...props} style={styles.input} />
     </View>
@@ -37,9 +38,9 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    width: '100%',
   },
   input: {
+    color: '#000',
     marginLeft: 5,
   },
 });

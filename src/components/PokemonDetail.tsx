@@ -2,6 +2,10 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {Chip} from 'react-native-paper';
+
+import HeightIcon from '../assets/Icon/Height.svg';
+import WeightIcon from '../assets/Icon/Weight.svg';
 import {FadeInImage} from './ui/FadeImage';
 import {DetailPokemon} from '../interfaces/index';
 
@@ -21,34 +25,46 @@ export const PokemonDetails = ({pokemon}: Props) => {
           ...styles.container,
           marginTop: 370,
         }}>
-        <Text style={styles.title}>Types</Text>
-        <View style={{flexDirection: 'row'}}>
+        <View style={styles.chips}>
           {pokemon.types.map(({type}) => (
-            <Text
+            <Chip
               style={{
                 ...styles.regularText,
                 marginRight: 10,
               }}
               key={type.name}>
               {type.name}
-            </Text>
+            </Chip>
           ))}
         </View>
 
-        {/* weight */}
-        <Text style={styles.title}>Peso</Text>
-        <Text style={styles.regularText}>{pokemon.weight}kg</Text>
+        {/* Detail */}
+        <View style={styles.weightHeight}>
+          <View style={{flexDirection: 'row'}}>
+            <HeightIcon style={{margin: 5}} />
+            <View style={{flexDirection: 'column'}}>
+              <Text style={styles.regularText}>{pokemon.weight} lbs</Text>
+              <Text style={styles.subtitle}>Weight</Text>
+            </View>
+          </View>
+
+          <View style={{flexDirection: 'row'}}>
+            <WeightIcon style={{margin: 5}} />
+            <View style={{flexDirection: 'column'}}>
+              <Text style={styles.regularText}>{pokemon.height}" ft</Text>
+              <Text style={styles.subtitle}>Height</Text>
+            </View>
+          </View>
+        </View>
       </View>
 
-      {/* Types */}
+      {/* Evolution images */}
       <View style={styles.container}>
-        <Text style={styles.title}>Sprites</Text>
+        <Text style={styles.title}>Evolutions</Text>
       </View>
 
-      <ScrollView
-        // style code
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}>
+      {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> */}
+      <View style={styles.contentEvo}>
         <FadeInImage
           uri={pokemon.sprites.front_default}
           style={styles.basicSprite}
@@ -68,81 +84,8 @@ export const PokemonDetails = ({pokemon}: Props) => {
           uri={pokemon.sprites.back_shiny}
           style={styles.basicSprite}
         />
-      </ScrollView>
-
-      {/* Habilidades */}
-      <View style={styles.container}>
-        <Text style={styles.title}>Habilidades base</Text>
-        <View style={{flexDirection: 'row'}}>
-          {pokemon.abilities.map(({ability}) => (
-            <Text
-              style={{
-                ...styles.regularText,
-                marginRight: 10,
-              }}
-              key={ability.name}>
-              {ability.name}
-            </Text>
-          ))}
-        </View>
       </View>
-
-      {/* Habilidades */}
-      <View style={styles.container}>
-        <Text style={styles.title}>Movimientos</Text>
-        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-          {pokemon.moves.map(({move}) => (
-            <Text
-              style={{
-                ...styles.regularText,
-                marginRight: 10,
-              }}
-              key={move.name}>
-              {move.name}
-            </Text>
-          ))}
-        </View>
-      </View>
-
-      {/* Stats */}
-      <View style={styles.container}>
-        <Text style={styles.title}>Stats</Text>
-        <View>
-          {pokemon.stats.map((stat, i) => (
-            <View key={stat.stat.name + i} style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  ...styles.regularText,
-                  marginRight: 10,
-                  width: 150,
-                }}
-                key={stat.stat.name}>
-                {stat.stat.name}
-              </Text>
-
-              <Text
-                style={{
-                  ...styles.regularText,
-                  fontWeight: 'bold',
-                }}>
-                {stat.base_stat}
-              </Text>
-            </View>
-          ))}
-        </View>
-
-        {/* Sprite final */}
-        <View
-          style={{
-            marginBottom: 20,
-            alignItems: 'center',
-          }}>
-          <FadeInImage
-            uri={pokemon.sprites.front_default}
-            style={styles.basicSprite}
-          />
-        </View>
-      </View>
+      {/* </ScrollView> */}
     </ScrollView>
   );
 };
@@ -150,17 +93,45 @@ export const PokemonDetails = ({pokemon}: Props) => {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 20,
+    marginVertical: 7,
+  },
+  chips: {
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  weightHeight: {
+    marginTop: 40,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  contentEvo: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    borderRadius: 8,
+    height: 130,
+    backgroundColor: 'rgba(44, 44, 44, 0.5)',
   },
   title: {
-    fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontWeight: '600',
+    color: 'white',
     marginTop: 20,
   },
   regularText: {
-    fontSize: 19,
+    fontSize: 16,
+    color: 'white',
+    fontWeight: '400',
+  },
+  subtitle: {
+    fontSize: 12,
+    color: '#828282',
+    textAlign: 'center',
   },
   basicSprite: {
     width: 100,
-    height: 100,
+    height: 65,
   },
 });

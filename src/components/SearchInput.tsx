@@ -1,37 +1,24 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
   View,
   StyleProp,
   ViewStyle,
+  Text,
 } from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/native';
 
 import SearchIcon from '../assets/Icon/Search.svg';
 import UserIcon from '../assets/Icon/User.svg';
-import {InputComponent} from './ui/Input';
-import {useDebouncedValue} from '../hooks/useDebouncedValue';
 
-type mainScreenProp = StackNavigationProp<any, 'Main'>;
 interface Props {
-  onDebounce?: (value: string) => void;
   style?: StyleProp<ViewStyle>;
 }
 
-export const SearchInput = ({style, onDebounce}: Props) => {
-  const navigation = useNavigation<mainScreenProp>();
-  const [textValue, setTextValue] = useState('');
-
-  const deboncedValue = useDebouncedValue(textValue);
-
-  useEffect(() => {
-    if (onDebounce) {
-      onDebounce(deboncedValue);
-    }
-  }, [deboncedValue]);
+export const SearchInput = ({style}: Props) => {
+  const navigation: any = useNavigation();
 
   return (
     <View
@@ -40,15 +27,14 @@ export const SearchInput = ({style, onDebounce}: Props) => {
         ...(style as any),
       }}>
       <View style={styles.item}>
-        <InputComponent
-          placeholder="Search"
-          placeholderTextColor="#828282"
-          autoCorrect={false}
-          value={textValue}
-          onChangeText={setTextValue}
-          onSubmitEditing={() => navigation.push('Search')}
-          icon={<SearchIcon width={22} height={22} />}
-        />
+        <TouchableOpacity
+          style={{margin: 6}}
+          onPress={() => navigation.navigate('Search')}>
+          <View style={{flexDirection: 'row'}}>
+            <SearchIcon width={22} height={22} />
+            <Text style={{color: '#828282', marginLeft: 4}}>Search</Text>
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.button}>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
@@ -76,10 +62,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 10,
-    top: 18,
   },
   item: {
-    height: 20,
+    backgroundColor: '#fff',
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderRadius: 6,
+    height: 44,
     width: '100%',
   },
 });

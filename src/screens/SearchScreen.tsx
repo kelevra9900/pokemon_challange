@@ -1,16 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList, Platform, StyleSheet} from 'react-native';
-import {Searchbar} from 'react-native-paper';
-
+import {
+  View,
+  Text,
+  FlatList,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import SearchIcon from '../assets/Icon/Search.svg';
-import { ListPokemon } from '../components/ListPokemon';
+import {ListPokemon} from '../components/ListPokemon';
+import {InputComponent} from '../components/ui/Input';
 
 import {Loading} from '../components/ui/Loading';
 import {usePokemonSearch} from '../hooks/usePokemonSearch';
 import {Pokemon} from '../interfaces/index';
+import SearchIcon from '../assets/Icon/Search.svg';
 
 export const SearchScreen = () => {
   const {top} = useSafeAreaInsets();
@@ -48,33 +54,45 @@ export const SearchScreen = () => {
 
   return (
     <View style={styles.main}>
-      <View>
-        <Searchbar
+      <View style={styles.searchInput}>
+        <InputComponent
           placeholder="Search"
-          onChangeText={onChangeSearch}
+          placeholderTextColor="#828282"
+          styles={{width: term === '' ? '100%' : '84%'}}
+          autoCorrect={false}
           value={term}
+          onChangeText={onChangeSearch}
+          icon={<SearchIcon width={22} height={22} />}
         />
+        {term === '' ? null : (
+          <TouchableOpacity onPress={() => setTerm('')}>
+            <Text style={styles.cancel}>Cancel</Text>
+          </TouchableOpacity>
+        )}
       </View>
 
-      <FlatList
-        data={pokemonFiltered}
-        keyExtractor={pokemon => pokemon.id.toString()}
-        showsVerticalScrollIndicator={false}
-        numColumns={2}
-        // Header
-        ListHeaderComponent={
-          <Text
-            style={{
-              ...styles.title,
-              ...styles.globalMargin,
-              paddingBottom: 10,
-              marginTop: Platform.OS === 'ios' ? top + 60 : top + 80,
-            }}>
-            {term}
-          </Text>
-        }
-        renderItem={({item}: any) => <ListPokemon pokemon={item} />}
-      />
+      {term === '' ? (
+        <Text>Search pokemons by name or by number</Text>
+      ) : (
+        <FlatList
+          data={pokemonFiltered}
+          keyExtractor={pokemon => pokemon.id.toString()}
+          showsVerticalScrollIndicator={false}
+          // Header
+          ListHeaderComponent={
+            <Text
+              style={{
+                ...styles.title,
+                ...styles.globalMargin,
+                paddingBottom: 10,
+                marginTop: Platform.OS === 'ios' ? top + 60 : top + 80,
+              }}>
+              {term}
+            </Text>
+          }
+          renderItem={({item}: any) => <ListPokemon pokemon={item} />}
+        />
+      )}
     </View>
   );
 };
@@ -84,6 +102,17 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#111111',
     paddingHorizontal: 16,
+  },
+  cancel: {
+    color: '#fff',
+    fontSize: 14,
+    marginTop: 10,
+  },
+  searchInput: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    zIndex: 1,
   },
   globalMargin: {
     marginHorizontal: 20,
