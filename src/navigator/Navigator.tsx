@@ -40,6 +40,8 @@ export const Navigator = () => {
               headerStyle: {
                 backgroundColor: '#111111',
                 elevation: 0,
+                shadowOpacity: 0,
+                shadowRadius: 0,
               },
               headerTitleAlign: 'center',
               headerTintColor: '#ffffff',

@@ -44,11 +44,10 @@ const Input = ({
             alignItems: 'center',
           },
         ]}>
-        {/* <Icon
-          name={iconName}
-          style={{color: COLORS.darkBlue, fontSize: 22, marginRight: 10}}
-        /> */}
+        {/* Icon input*/}
         {icon}
+
+        {/* Input */}
         <TextInput
           autoCorrect={false}
           onFocus={() => {
