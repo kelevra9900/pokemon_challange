@@ -4,7 +4,7 @@ This project is made in react native
 
 ## Installation
 
-Use the package manager [yarn](https://yarnpkg.com/) to install packages or npm.
+Use the package manager [yarn](https://yarnpkg.com/) to install.
 
 ```bash
 yarn install
@@ -13,8 +13,6 @@ or
 ```bash
 npm install
 ```
-
-## Checkout the project
 
 ## Check out the App
 
