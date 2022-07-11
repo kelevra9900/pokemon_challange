@@ -17,6 +17,7 @@ export const HomeScreen = () => {
       }}>
       <FlatList
         data={simplePokemonList}
+        testID="pokemon-list"
         keyExtractor={pokemon => pokemon?.id?.toString()}
         showsVerticalScrollIndicator={false}
         numColumns={2}

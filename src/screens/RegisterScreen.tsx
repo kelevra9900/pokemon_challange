@@ -93,6 +93,7 @@ export const RegisterScreen = () => {
           error={errors.name}
           value={name}
           onSubmitEditing={validate}
+          testID="name-register-input"
         />
         {/* Input Email */}
         <Input
@@ -102,6 +103,7 @@ export const RegisterScreen = () => {
           error={errors.email}
           value={email}
           onSubmitEditing={validate}
+          testID="email-register-input"
         />
 
         {/* Input password */}
@@ -113,7 +115,7 @@ export const RegisterScreen = () => {
           value={password}
           onSubmitEditing={validate}
           secureTextEntry={true}
-          testID="password-input"
+          testID="password-register-input"
         />
 
         {/* Input Confirm Password */}
@@ -127,13 +129,14 @@ export const RegisterScreen = () => {
           value={password_confirmation}
           onSubmitEditing={validate}
           secureTextEntry={true}
-          testID="password_confirmation-input"
+          testID="password_confirmation-register-input"
         />
 
         {/* Custon Button login */}
         <TouchableOpacity
           style={styles.registerButton}
           disabled={loading}
+          testID="register-submit-button"
           onPress={validate}>
           <Text style={styles.textLogin}>Create account</Text>
         </TouchableOpacity>
