@@ -2,7 +2,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {Chip} from 'react-native-paper';
 
 import HeightIcon from '../assets/Icon/Height.svg';
 import WeightIcon from '../assets/Icon/Weight.svg';
@@ -25,19 +24,6 @@ export const PokemonDetails = ({pokemon}: Props) => {
           ...styles.container,
           marginTop: 370,
         }}>
-        <View style={styles.chips}>
-          {pokemon.types.map(({type}) => (
-            <Chip
-              style={{
-                ...styles.regularText,
-                marginRight: 10,
-              }}
-              key={type.name}>
-              {type.name}
-            </Chip>
-          ))}
-        </View>
-
         {/* Detail */}
         <View style={styles.weightHeight}>
           <View style={{flexDirection: 'row'}}>
@@ -94,11 +80,6 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 20,
     marginVertical: 7,
-  },
-  chips: {
-    flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'center',
   },
   weightHeight: {
     marginTop: 40,

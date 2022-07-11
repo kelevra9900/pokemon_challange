@@ -4,19 +4,21 @@ import {
   View,
   Text,
   StyleSheet,
-  ActivityIndicator,
   Image,
   TouchableOpacity,
   SafeAreaView,
+  ActivityIndicator,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {StackScreenProps} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Chip} from 'react-native-paper';
 
 import {usePokemon} from '../hooks/useSinglePokemon';
-// import BackIcon from '../assets/Icon/Chevron-Left.svg';
 import {FadeInImage} from '../components/ui/FadeImage';
 import {PokemonDetails} from '../components/PokemonDetail';
+import COLORS from '../utils/colors';
+import {Loading} from '../components/ui/Loading';
 
 interface Props extends StackScreenProps<any, 'Pokemon'> {}
 
@@ -25,8 +27,7 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
   const {id, name} = simplePokemon;
   const {top} = useSafeAreaInsets();
 
-  const {isLoading, pokemon} = usePokemon(id.toString());
-
+  const {isLoading, pokemon, details} = usePokemon(id.toString());
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
       {/* Head Containerr */}
@@ -60,23 +61,42 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
           <Text
             style={{
               ...styles.pokemonName,
-              top: top - 49,
+              top: top - 7,
             }}>
             {name}
           </Text>
           {/* Pokemon ID */}
-          <Text style={styles.idPokemon}>{'#0' + pokemon.id}</Text>
+          {isLoading ? null : (
+            <Text style={styles.idPokemon}>{'#' + pokemon.id}</Text>
+          )}
+        </View>
+        {/* Chips type */}
+        {isLoading ? (
+          <View style={styles.loadingIndicator}>
+            <ActivityIndicator color={color} size={50} />
+          </View>
+        ) : (
+          <View style={styles.chips}>
+            {pokemon.types.map(({type}) => (
+              <Chip
+                style={{
+                  ...styles.regularText,
+                  marginRight: 10,
+                }}
+                key={type.name}>
+                {type.name}
+              </Chip>
+            ))}
+          </View>
+        )}
+        {/* Pokemon Description */}
+        <View style={styles.description}>
+          <Text style={styles.textDescription}>{details}</Text>
         </View>
       </View>
 
       {/* Detalles y Loading */}
-      {isLoading ? (
-        <View style={styles.loadingIndicator}>
-          <ActivityIndicator color={color} size={50} />
-        </View>
-      ) : (
-        <PokemonDetails pokemon={pokemon} />
-      )}
+      {isLoading ? <Loading /> : <PokemonDetails pokemon={pokemon} />}
     </SafeAreaView>
   );
 };
@@ -117,5 +137,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  description: {
+    marginVertical: 20,
+    alignItems: 'center',
+  },
+  textDescription: {
+    justifyContent: 'center',
+    color: COLORS.greyLight,
+  },
+  chips: {
+    marginVertical: 6,
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  regularText: {
+    fontSize: 16,
+    color: 'white',
+    fontWeight: '400',
   },
 });
