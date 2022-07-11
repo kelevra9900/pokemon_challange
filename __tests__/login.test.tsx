@@ -48,14 +48,20 @@ describe('The login page must have a form with the following fields: email, pass
     });
   });
   it('display required messages as the format: "The [field name] is required"', () => {
-    const {getByTestId} = wrapper;
-    fireEvent.changeText(getByTestId('email-input'), '');
-    fireEvent.changeText(getByTestId('password-input'), '');
-    fireEvent.press(getByTestId('login-button'));
+    const {getByTestId, getByText} = wrapper;
+    act(() => {
+      fireEvent.changeText(getByTestId('email-input'), '');
+      fireEvent.changeText(getByTestId('password-input'), '');
+      fireEvent.press(getByTestId('login-button'));
+    });
+    waitFor(() => {
+      expect(getByText('The email field is required')).toBeTruthy();
+      expect(getByText('The password field is required')).toBeTruthy();
+    });
   });
 });
 
-describe.only('The Login page must be define register button and navigate to this page', () => {
+describe('The Login page must be define register button and navigate to this page', () => {
   it('Clicking register button', () => {
     const {getByTestId, getByText} = render(
       <NavigationContainer>

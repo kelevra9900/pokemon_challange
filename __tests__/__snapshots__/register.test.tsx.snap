@@ -14,40 +14,10 @@ exports[` 1`] = `
   <View
     style={
       Object {
-        "flex": 1,
-        "marginTop": 20,
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "flex": 1,
-          "marginTop": 12,
-        }
-      }
-    >
-      <SvgMock
-        height={38}
-        style={
-          Object {
-            "alignItems": "center",
-            "flex": 1,
-            "marginTop": 12,
-          }
-        }
-        testID="logo-image"
-        width={204}
-      />
-    </View>
-  </View>
-  <View
-    style={
-      Object {
         "backgroundColor": "#111111",
         "flex": 1,
         "marginHorizontal": 16,
+        "marginTop": 49,
       }
     }
   >
@@ -75,15 +45,13 @@ exports[` 1`] = `
           ]
         }
       >
-        <SvgMock />
         <TextInput
           autoCorrect={false}
-          icon={<SvgMock />}
           onBlur={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           onSubmitEditing={[Function]}
-          placeholder="Email"
+          placeholder="Name"
           placeholderTextColor="#828282"
           style={
             Object {
@@ -91,7 +59,7 @@ exports[` 1`] = `
               "flex": 1,
             }
           }
-          testID="email-input"
+          testID="name-register-input"
           value=""
         />
       </View>
@@ -120,10 +88,51 @@ exports[` 1`] = `
           ]
         }
       >
-        <SvgMock />
         <TextInput
           autoCorrect={false}
-          icon={<SvgMock />}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="Email"
+          placeholderTextColor="#828282"
+          style={
+            Object {
+              "color": "#111111",
+              "flex": 1,
+            }
+          }
+          testID="email-register-input"
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F3F4FB",
+              "borderRadius": 6,
+              "flexDirection": "row",
+              "height": 44,
+              "paddingHorizontal": 15,
+            },
+            Object {
+              "alignItems": "center",
+              "borderColor": "#F3F4FB",
+            },
+          ]
+        }
+      >
+        <TextInput
+          autoCorrect={false}
           onBlur={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
@@ -137,7 +146,51 @@ exports[` 1`] = `
               "flex": 1,
             }
           }
-          testID="password-input"
+          testID="password-register-input"
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F3F4FB",
+              "borderRadius": 6,
+              "flexDirection": "row",
+              "height": 44,
+              "paddingHorizontal": 15,
+            },
+            Object {
+              "alignItems": "center",
+              "borderColor": "#F3F4FB",
+            },
+          ]
+        }
+      >
+        <TextInput
+          autoCorrect={false}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="Confirm Password"
+          placeholderTextColor="#828282"
+          secureTextEntry={true}
+          style={
+            Object {
+              "color": "#111111",
+              "flex": 1,
+            }
+          }
+          testID="password_confirmation-register-input"
           value=""
         />
       </View>
@@ -169,7 +222,7 @@ exports[` 1`] = `
           "opacity": 1,
         }
       }
-      testID="login-button"
+      testID="register-submit-button"
     >
       <Text
         style={
@@ -181,39 +234,7 @@ exports[` 1`] = `
           }
         }
       >
-        Log In
-      </Text>
-    </View>
-    <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "color": "red",
-          "marginHorizontal": 16,
-          "opacity": 1,
-        }
-      }
-      testID="navigate-to-register"
-    >
-      <Text
-        style={
-          Object {
-            "color": "#2F80ED",
-            "textAlign": "center",
-            "textDecorationLine": "underline",
-          }
-        }
-      >
-        Create an account
+        Create account
       </Text>
     </View>
   </View>
