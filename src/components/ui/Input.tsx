@@ -5,29 +5,20 @@ import COLORS from '../../utils/colors';
 
 type Props = {
   placeholder?: string;
+  placeholderTextColor?: string;
   secureTextEntry?: boolean;
+  autoCorrect?: boolean;
   icon?: React.ReactElement;
-  onChangeText: (text: string) => void;
+  onChangeText?: any;
+  onSubmitEditing?: any;
+  onFocus?: any;
   value: string;
-  error?: string;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  testID?: string;
-  onSubmitEditing?: () => void;
   styles?: any;
+  testID?: string;
+  error?: string;
 };
 
-const Input = ({
-  placeholder,
-  error,
-  icon,
-  value,
-  secureTextEntry,
-  testID,
-  onSubmitEditing,
-  onFocus = () => {},
-  styles,
-}: Props) => {
+const Input = (props: Props) => {
   const [isFocused, setIsFocused] = React.useState(false);
 
   return (
@@ -36,7 +27,7 @@ const Input = ({
         style={[
           style.inputContainer,
           {
-            borderColor: error
+            borderColor: props.error
               ? COLORS.error
               : isFocused
               ? COLORS.darkBlue
@@ -45,28 +36,24 @@ const Input = ({
           },
         ]}>
         {/* Icon input*/}
-        {icon}
+        {props.icon}
 
         {/* Input */}
         <TextInput
+          {...props}
           autoCorrect={false}
           onFocus={() => {
-            onFocus();
+            props.onFocus();
             setIsFocused(true);
           }}
-          placeholder={placeholder}
           placeholderTextColor={COLORS.placeholder}
           onBlur={() => setIsFocused(false)}
-          secureTextEntry={secureTextEntry}
-          style={{flex: 1, color: COLORS.black, ...styles}}
-          value={value}
-          testID={testID}
-          onSubmitEditing={onSubmitEditing}
+          style={{flex: 1, color: COLORS.black}}
         />
       </View>
-      {error && (
+      {props.error && (
         <Text style={{marginTop: 7, color: COLORS.error, fontSize: 12}}>
-          {error}
+          {props.error}
         </Text>
       )}
     </View>
