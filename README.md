@@ -14,8 +14,6 @@ or
 npm install
 ```
 
-## Checkout the project
-
 ## Check out the App
 
 - [Firstscreens]
