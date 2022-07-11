@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {fireEvent, render, waitFor} from '@testing-library/react-native';
+import {act, fireEvent, render, waitFor} from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
 
 import {LoginScreen} from '../src/screens/LoginScreen';
@@ -57,15 +57,16 @@ describe('The login page must have a form with the following fields: email, pass
 
 describe.only('The Login page must be define register button and navigate to this page', () => {
   it('Clicking register button', () => {
-    const push = jest.fn();
-    const {getByTestId} = render(
+    const {getByTestId, getByText} = render(
       <NavigationContainer>
         <LoginScreen />
       </NavigationContainer>,
     );
-    fireEvent.press(getByTestId('navigate-to-register'));
-    waitFor(() => {
-      expect(push).toHaveBeenCalled();
+    expect(getByText('Create an account')).toBeTruthy();
+    const button = getByTestId('navigate-to-register');
+
+    act(() => {
+      fireEvent.press(button);
     });
   });
 });

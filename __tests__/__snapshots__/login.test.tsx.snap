@@ -1,35 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[` 1`] = `
-<View
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "#111111",
+      "flex": 1,
+    }
+  }
   testID="login-page"
 >
   <View
-    onLayout={[Function]}
     style={
-      Array [
-        Object {
-          "flex": 1,
-        },
-        Object {
-          "paddingBottom": 0,
-        },
-      ]
+      Object {
+        "flex": 1,
+        "marginTop": 20,
+      }
     }
   >
-    <RCTSafeAreaView
-      emulateUnlessSupported={true}
+    <View
       style={
         Object {
+          "alignItems": "center",
           "flex": 1,
-          "height": 600,
-          "justifyContent": "center",
-          "marginHorizontal": 16,
-          "paddingHorizontal": 10,
+          "marginTop": 12,
         }
       }
     >
-      <View
+      <SvgMock
+        height={38}
         style={
           Object {
             "alignItems": "center",
@@ -37,209 +37,168 @@ exports[` 1`] = `
             "marginTop": 12,
           }
         }
-      >
-        <SvgMock
-          height={38}
-          style={
-            Object {
-              "alignItems": "center",
-              "flex": 1,
-              "marginTop": 12,
-            }
-          }
-          testID="logo-image"
-          width={204}
-        />
-      </View>
-      <View
+        testID="logo-image"
+        width={204}
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#111111",
+        "flex": 1,
+        "marginHorizontal": 16,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#F3F1F3",
+          "borderRadius": 6,
+          "flexDirection": "row",
+          "height": 44,
+          "justifyContent": "center",
+          "marginVertical": 16,
+        }
+      }
+    >
+      <SvgMock
         style={
           Object {
+            "marginLeft": 17,
+          }
+        }
+      />
+      <TextInput
+        onChangeText={[Function]}
+        onSubmitEditing={[Function]}
+        placeholder="Email"
+        placeholderTextColor="#828282"
+        style={
+          Object {
+            "borderRadius": 6,
+            "color": "#111111",
             "flex": 1,
+            "marginHorizontal": 10,
+          }
+        }
+        testID="email-input"
+        value=""
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#F3F1F3",
+          "borderRadius": 6,
+          "flexDirection": "row",
+          "height": 44,
+          "justifyContent": "center",
+          "marginVertical": 16,
+        }
+      }
+    >
+      <SvgMock
+        style={
+          Object {
+            "marginLeft": 17,
+          }
+        }
+      />
+      <TextInput
+        autoCorrect={false}
+        onChangeText={[Function]}
+        onSubmitEditing={[Function]}
+        placeholder="Password"
+        placeholderTextColor="#828282"
+        secureTextEntry={true}
+        style={
+          Object {
+            "borderRadius": 6,
+            "color": "#111111",
+            "flex": 1,
+            "marginHorizontal": 10,
+          }
+        }
+        testID="password-input"
+        value=""
+      />
+    </View>
+    <View
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignContent": "center",
+          "backgroundColor": "#2F80ED",
+          "borderRadius": 6,
+          "height": 48,
+          "justifyContent": "center",
+          "marginVertical": 16,
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontSize": 16,
+            "fontWeight": "600",
+            "textAlign": "center",
           }
         }
       >
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#F3F1F3",
-              "borderRadius": 6,
-              "elevation": 5,
-              "flexDirection": "row",
-              "height": 40,
-              "marginTop": 20,
-              "paddingHorizontal": 20,
-              "shadowColor": "#000",
-              "shadowOffset": Object {
-                "height": 2,
-                "width": 0,
-              },
-              "shadowOpacity": 0.25,
-              "shadowRadius": 3.84,
-            }
+        Log In
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "color": "red",
+          "marginHorizontal": 16,
+          "opacity": 1,
+        }
+      }
+      testID="navigate-to-register"
+    >
+      <Text
+        style={
+          Object {
+            "color": "#2F80ED",
+            "textAlign": "center",
+            "textDecorationLine": "underline",
           }
-        >
-          <SvgMock
-            height={22}
-            width={22}
-          />
-          <TextInput
-            autoCorrect={false}
-            icon={
-              <SvgMock
-                height={22}
-                width={22}
-              />
-            }
-            onChangeText={[Function]}
-            onSubmitEditing={[Function]}
-            placeholder="Email"
-            placeholderTextColor="#828282"
-            style={
-              Object {
-                "color": "#000",
-                "marginLeft": 5,
-              }
-            }
-            testID="email-input"
-            value=""
-          />
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#F3F1F3",
-              "borderRadius": 6,
-              "elevation": 5,
-              "flexDirection": "row",
-              "height": 40,
-              "marginTop": 20,
-              "paddingHorizontal": 20,
-              "shadowColor": "#000",
-              "shadowOffset": Object {
-                "height": 2,
-                "width": 0,
-              },
-              "shadowOpacity": 0.25,
-              "shadowRadius": 3.84,
-            }
-          }
-        >
-          <SvgMock
-            height={22}
-            width={22}
-          />
-          <TextInput
-            autoCorrect={false}
-            icon={
-              <SvgMock
-                height={22}
-                width={22}
-              />
-            }
-            onChangeText={[Function]}
-            onSubmitEditing={[Function]}
-            placeholder="Password"
-            placeholderTextColor="#828282"
-            secureTextEntry={true}
-            style={
-              Object {
-                "color": "#000",
-                "marginLeft": 5,
-              }
-            }
-            testID="password-input"
-            value=""
-          />
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "marginTop": 30,
-            }
-          }
-        >
-          <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#2F80ED",
-                "borderRadius": 8,
-                "height": 48,
-                "justifyContent": "center",
-                "opacity": 1,
-                "paddingHorizontal": 20,
-                "paddingVertical": 5,
-                "width": "100%",
-              }
-            }
-            testID="login-button"
-          >
-            <Text
-              style={
-                Object {
-                  "color": "white",
-                  "fontSize": 16,
-                }
-              }
-            >
-              Log In
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "marginTop": 30,
-            }
-          }
-        >
-          <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-              }
-            }
-            testID="navigate-to-register"
-          >
-            <Text
-              style={
-                Object {
-                  "color": "#2F80ED",
-                  "fontSize": 16,
-                  "textDecorationLine": "underline",
-                }
-              }
-            >
-              Create an account
-            </Text>
-          </View>
-        </View>
-      </View>
-    </RCTSafeAreaView>
+        }
+      >
+        Create an account
+      </Text>
+    </View>
   </View>
-</View>
+</RCTSafeAreaView>
 `;
