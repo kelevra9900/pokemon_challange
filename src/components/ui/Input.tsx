@@ -14,6 +14,7 @@ type Props = {
   onBlur?: () => void;
   testID?: string;
   onSubmitEditing?: () => void;
+  styles?: any;
 };
 
 const Input = ({
@@ -25,7 +26,7 @@ const Input = ({
   testID,
   onSubmitEditing,
   onFocus = () => {},
-  ...props
+  styles,
 }: Props) => {
   const [isFocused, setIsFocused] = React.useState(false);
 
@@ -58,11 +59,10 @@ const Input = ({
           placeholderTextColor={COLORS.placeholder}
           onBlur={() => setIsFocused(false)}
           secureTextEntry={secureTextEntry}
-          style={{flex: 1, color: COLORS.black}}
+          style={{flex: 1, color: COLORS.black, ...styles}}
           value={value}
           testID={testID}
           onSubmitEditing={onSubmitEditing}
-          {...props}
         />
       </View>
       {error && (

@@ -5,27 +5,26 @@ import {
   View,
   Text,
   FlatList,
-  Platform,
   StyleSheet,
   TouchableOpacity,
+  SafeAreaView,
+  TextInput,
 } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {ListPokemon} from '../components/ListPokemon';
-import {InputComponent} from '../components/ui/Input';
 
 import {Loading} from '../components/ui/Loading';
 import {usePokemonSearch} from '../hooks/usePokemonSearch';
 import {Pokemon} from '../interfaces/index';
-import SearchIcon from '../assets/Icon/Search.svg';
+// import SearchIcon from '../assets/Icon/Search.svg';
 import {EmptySearch} from '../components/EmptySearch';
+import COLORS from '../utils/colors';
 
 export const SearchScreen = () => {
-  const {top} = useSafeAreaInsets();
   const {isFetching, simplePokemonList} = usePokemonSearch();
 
   const [pokemonFiltered, setPokemonFiltered] = useState<Pokemon[]>([]);
 
-  const [term, setTerm] = useState('');
+  const [term, setTerm] = useState('eee');
 
   useEffect(() => {
     if (term.length === 0) {
@@ -52,19 +51,19 @@ export const SearchScreen = () => {
   const onChangeSearch = (query: string) => setTerm(query);
 
   return (
-    <View style={styles.main}>
-      <View style={styles.searchInput}>
-        <InputComponent
+    <SafeAreaView style={styles.main}>
+      <View style={styles.searchContent}>
+        <TextInput
+          style={{width: term === '' ? '100%' : '84%', ...styles.searchInput}}
           placeholder="Search"
-          placeholderTextColor="#828282"
-          styles={{width: term === '' ? '100%' : '84%'}}
-          autoCorrect={false}
+          onChangeText={(value: string) => onChangeSearch(value)}
+          onSubmitEditing={() => {}}
           value={term}
-          onChangeText={onChangeSearch}
-          icon={<SearchIcon width={22} height={22} />}
         />
         {term === '' ? null : (
-          <TouchableOpacity onPress={() => setTerm('')}>
+          <TouchableOpacity
+            onPress={() => setTerm('')}
+            style={styles.cancelContent}>
             <Text style={styles.cancel}>Cancel</Text>
           </TouchableOpacity>
         )}
@@ -83,8 +82,8 @@ export const SearchScreen = () => {
               style={{
                 ...styles.title,
                 ...styles.globalMargin,
+                marginTop: 12,
                 paddingBottom: 10,
-                marginTop: Platform.OS === 'ios' ? top + 60 : top + 80,
               }}>
               {term}
             </Text>
@@ -92,7 +91,7 @@ export const SearchScreen = () => {
           renderItem={({item}: any) => <ListPokemon pokemon={item} />}
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -100,24 +99,32 @@ export const styles = StyleSheet.create({
   main: {
     flex: 1,
     backgroundColor: '#111111',
-    paddingHorizontal: 16,
   },
   cancel: {
     color: '#fff',
     fontSize: 14,
     marginTop: 10,
   },
-  searchInput: {
+  searchContent: {
+    marginHorizontal: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+  },
+  searchInput: {
+    backgroundColor: '#fff',
+    borderRadius: 6,
+    height: 44,
+    paddingHorizontal: 10,
+  },
+  cancelContent: {
+    marginLeft: 10,
     alignItems: 'center',
-    zIndex: 1,
   },
   globalMargin: {
     marginHorizontal: 20,
   },
   title: {
-    fontSize: 35,
+    fontSize: 29,
     fontWeight: 'bold',
+    color: COLORS.white,
   },
 });
