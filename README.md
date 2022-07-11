@@ -20,12 +20,12 @@ npm install
  
 - [App]
 | Login | Register | Home |
-|-----------|----------------|-----------------|----------------|
+|-----------|----------------|-----------------|
 | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/1.png) | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/2.png)| ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/3.png)|
 
 - [Details]
 | Search | Profile | Detail |
-|-----------|----------------|-----------------|----------------|
+|-----------|----------------|-----------------|
 | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/4.png) | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/5.png)| ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/6.png)|
 
 - [Preview]
