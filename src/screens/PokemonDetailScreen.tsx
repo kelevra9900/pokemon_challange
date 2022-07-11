@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   Image,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {StackScreenProps} from '@react-navigation/stack';
@@ -27,7 +28,7 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
   const {isLoading, pokemon} = usePokemon(id.toString());
 
   return (
-    <View style={{flex: 1, backgroundColor: 'black'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
       {/* Head Containerr */}
       <View
         style={{
@@ -40,9 +41,9 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
           activeOpacity={0.8}
           style={{
             ...styles.backButton,
-            top: top + 10,
+            top: top - 58,
           }}>
-          <Icon name="angle-left" size={45} color="#fff" />
+          <Icon name="angle-left" size={37} color="#BDBDBD" />
         </TouchableOpacity>
 
         <View style={styles.pokemonContent}>
@@ -59,7 +60,7 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
           <Text
             style={{
               ...styles.pokemonName,
-              top: top + 24,
+              top: top - 49,
             }}>
             {name}
           </Text>
@@ -76,7 +77,7 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
       ) : (
         <PokemonDetails pokemon={pokemon} />
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   idPokemon: {
-    marginTop: 20,
+    color: '#fff',
     fontSize: 16,
     fontWeight: '400',
     alignItems: 'center',
@@ -109,8 +110,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   pokemonImage: {
-    width: 250,
-    height: 250,
+    width: 170,
+    height: 170,
   },
   loadingIndicator: {
     flex: 1,

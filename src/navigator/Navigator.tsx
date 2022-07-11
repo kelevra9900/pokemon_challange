@@ -52,7 +52,22 @@ export const Navigator = () => {
           {/* <Stack.Screen name="SplashScreen" component={SplashScreen} /> */}
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Pokemon" component={PokemonDetailScreen} />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              headerShown: true,
+              headerTitle: '',
+              headerStyle: {
+                backgroundColor: '#111111',
+                elevation: 0,
+                shadowOpacity: 0,
+                shadowRadius: 0,
+              },
+              headerTintColor: '#ffffff',
+              headerBackImage: () => <BackButton />,
+            }}
+          />
           <Stack.Screen name="Search" component={SearchScreen} />
         </>
       )}
