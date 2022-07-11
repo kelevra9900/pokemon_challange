@@ -92,6 +92,7 @@ export const LoginScreen = () => {
           error={errors.email}
           value={email}
           onSubmitEditing={handleLogin}
+          testID="email-input"
         />
 
         {/* Input password */}
@@ -104,10 +105,12 @@ export const LoginScreen = () => {
           value={password}
           onSubmitEditing={handleLogin}
           secureTextEntry={true}
+          testID="password-input"
         />
 
         {/* Custon Button login */}
         <TouchableOpacity
+          testID="login-button"
           style={styles.loginButton}
           disabled={loading}
           onPress={validate}>
