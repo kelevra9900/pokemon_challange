@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen} from '../screens/HomeScreen';
@@ -69,7 +70,22 @@ export const Navigator = () => {
               },
             }}
           />
-          <Stack.Screen name="Pokemon" component={PokemonDetailScreen} />
+          <Stack.Screen
+            name="Pokemon"
+            component={PokemonDetailScreen}
+            options={{
+              headerShown: true,
+              headerTransparent: true,
+              headerTitle: '',
+              headerTintColor: '#ffffff',
+              headerStyle: {
+                backgroundColor: '#111111',
+                elevation: 0,
+                shadowOpacity: 0,
+                shadowRadius: 0,
+              },
+            }}
+          />
           <Stack.Screen
             name="Profile"
             component={ProfileScreen}

@@ -5,13 +5,11 @@ import {
   Text,
   StyleSheet,
   Image,
-  TouchableOpacity,
   SafeAreaView,
   ActivityIndicator,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {StackScreenProps} from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {Chip} from 'react-native-paper';
 
 import {usePokemon} from '../hooks/useSinglePokemon';
@@ -22,7 +20,7 @@ import {Loading} from '../components/ui/Loading';
 
 interface Props extends StackScreenProps<any, 'Pokemon'> {}
 
-export const PokemonDetailScreen = ({route, navigation}: Props) => {
+export const PokemonDetailScreen = ({route}: Props) => {
   const {simplePokemon, color} = route.params as any;
   const {id, name} = simplePokemon;
   const {top} = useSafeAreaInsets();
@@ -36,17 +34,6 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
           backgroundColor: 'black',
           zIndex: 1,
         }}>
-        {/* Backbutton */}
-        <TouchableOpacity
-          onPress={() => navigation.pop()}
-          activeOpacity={0.8}
-          style={{
-            ...styles.backButton,
-            top: top - 58,
-          }}>
-          <Icon name="angle-left" size={37} color="#BDBDBD" />
-        </TouchableOpacity>
-
         <View style={styles.pokemonContent}>
           {/* Image in background */}
           <Image
@@ -65,10 +52,6 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
             }}>
             {name}
           </Text>
-          {/* Pokemon ID */}
-          {isLoading ? null : (
-            <Text style={styles.idPokemon}>{'#' + pokemon.id}</Text>
-          )}
         </View>
         {/* Chips type */}
         {isLoading ? (
@@ -76,18 +59,22 @@ export const PokemonDetailScreen = ({route, navigation}: Props) => {
             <ActivityIndicator color={color} size={50} />
           </View>
         ) : (
-          <View style={styles.chips}>
-            {pokemon.types.map(({type}) => (
-              <Chip
-                style={{
-                  ...styles.regularText,
-                  marginRight: 10,
-                }}
-                key={type.name}>
-                {type.name}
-              </Chip>
-            ))}
-          </View>
+          <>
+            {/* Pokemon ID */}
+            <Text style={styles.idPokemon}>{'#' + pokemon.id}</Text>
+            <View style={styles.chips}>
+              {pokemon.types.map(({type}) => (
+                <Chip
+                  style={{
+                    ...styles.regularText,
+                    marginRight: 10,
+                  }}
+                  key={type.name}>
+                  {type.name}
+                </Chip>
+              ))}
+            </View>
+          </>
         )}
         {/* Pokemon Description */}
         <View style={styles.description}>
@@ -109,7 +96,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '400',
-    alignItems: 'center',
+    textAlign: 'center',
   },
   imageBlur: {
     width: 480,
