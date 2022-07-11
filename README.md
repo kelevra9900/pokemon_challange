@@ -17,14 +17,14 @@ npm install
 ## Checkout the project
 
 ## Check out the App
- 
-| Login     | Register       | Home            |
-|-----------|----------------|-----------------|
-| ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/1.png) | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/2.png) | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/3.png) |
 
-| Search    | Profile        | Detail          |
-|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| ![search](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/4.png) | ![profile](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/5.png) | ![detail](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/6.png) |
+| Login | Register | Home | 
+|-----------|----------------|----------------|
+| ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/1.png) | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/2.png)| ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/3.png)|
+
+| Search | Profile | Detail | 
+|-----------|----------------|----------------|
+| ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/4.png) | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/5.png)| ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/6.png)|
 
 - [Preview]
 
