@@ -1,40 +1,19 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, SafeAreaView} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {StackScreenProps} from '@react-navigation/stack';
-
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Avatar} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import LogoutIcon from '../assets/Icon/Log-out.svg';
 import {AuthContext} from '../context/AuthContext';
-import {Background} from '../components/Background';
 import COLORS from '../utils/colors';
 
-interface Props extends StackScreenProps<any, 'PokemonScreen'> {}
-
-export const ProfileScreen = ({navigation}: Props) => {
+export const ProfileScreen = () => {
   const {user, logOut} = useContext(AuthContext);
   const fullName = user?.name.split(' ');
-  const {top} = useSafeAreaInsets();
   const initials =
     fullName?.shift()?.charAt(0) || '' + fullName?.pop()?.charAt(0) || '';
 
   return (
-    <>
-      <Background />
-      <View>
-        {/* Backbutton */}
-        <TouchableOpacity
-          onPress={() => navigation.pop()}
-          activeOpacity={0.8}
-          style={{
-            ...styles.backButton,
-            top: top + 10,
-          }}>
-          <Icon name="angle-left" size={45} color={COLORS.white} />
-        </TouchableOpacity>
-      </View>
+    <SafeAreaView style={styles.main}>
       <View style={styles.content}>
         <Avatar.Text
           size={100}
@@ -50,11 +29,15 @@ export const ProfileScreen = ({navigation}: Props) => {
           <LogoutIcon height={19} />
         </TouchableOpacity>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: COLORS.black,
+  },
   content: {
     alignItems: 'center',
     backgroundColor: COLORS.black,
