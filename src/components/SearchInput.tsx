@@ -47,11 +47,9 @@ export const SearchInput = ({style}: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignContent: 'center',
-    paddingHorizontal: 20,
+    // alignContent: 'center',
   },
   button: {
     width: 44,
@@ -61,11 +59,10 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 10,
+    marginLeft: 8,
   },
   item: {
     backgroundColor: '#fff',
-    alignContent: 'center',
     justifyContent: 'center',
     borderRadius: 6,
     height: 44,

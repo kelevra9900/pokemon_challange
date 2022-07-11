@@ -12,6 +12,7 @@ import {PokemonDetailScreen} from '../screens/PokemonDetailScreen';
 
 import BackButton from '../assets/Icon/Chevron-Left.svg';
 import {HeaderRegister} from '../components/ui/HeaderRegister';
+import {SearchInput} from '../components/SearchInput';
 
 const Stack = createStackNavigator();
 
@@ -52,7 +53,22 @@ export const Navigator = () => {
       ) : (
         <>
           {/* <Stack.Screen name="SplashScreen" component={SplashScreen} /> */}
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              headerShown: true,
+              headerTitle: () => <SearchInput style={{width: '88%'}} />,
+              headerTitleAlign: 'center',
+              headerTintColor: '#ffffff',
+              headerStyle: {
+                backgroundColor: '#111111',
+                elevation: 0,
+                shadowOpacity: 0,
+                shadowRadius: 0,
+              },
+            }}
+          />
           <Stack.Screen name="Pokemon" component={PokemonDetailScreen} />
           <Stack.Screen
             name="Profile"

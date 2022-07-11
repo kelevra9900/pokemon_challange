@@ -114,10 +114,13 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
     height: 44,
     paddingHorizontal: 10,
+    color: COLORS.black,
+    marginTop: 10,
   },
   cancelContent: {
     marginLeft: 10,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   globalMargin: {
     marginHorizontal: 20,
