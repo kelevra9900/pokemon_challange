@@ -69,7 +69,8 @@ export const AuthProvider = ({children}: any) => {
       dispatch({
         type: 'addError',
         payload:
-          error.response.data.errors.email[0] ||
+          error?.response?.data?.errors?.email[0] ||
+          error?.response?.data?.message ||
           'The selected email is invalid',
       });
     }
@@ -99,6 +100,7 @@ export const AuthProvider = ({children}: any) => {
       await AsyncStorage.setItem('token', data.access_token);
       await AsyncStorage.setItem('user', JSON.stringify(data.user));
     } catch (error: any) {
+      console.log('Error ::>:>:>:>:>', error.response.data);
       dispatch({
         type: 'addError',
         payload:
