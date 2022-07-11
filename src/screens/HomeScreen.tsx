@@ -13,7 +13,7 @@ export const HomeScreen = () => {
     <SafeAreaView
       style={{
         backgroundColor: '#111111',
-        flex: 1
+        flex: 1,
       }}>
       <FlatList
         data={simplePokemonList}

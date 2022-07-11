@@ -10,13 +10,13 @@ import {
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {StackScreenProps} from '@react-navigation/stack';
-import {Chip} from 'react-native-paper';
 
 import {usePokemon} from '../hooks/useSinglePokemon';
 import {FadeInImage} from '../components/ui/FadeImage';
 import {PokemonDetails} from '../components/PokemonDetail';
 import COLORS from '../utils/colors';
 import {Loading} from '../components/ui/Loading';
+import {ColorsType} from '../utils/color_types';
 
 interface Props extends StackScreenProps<any, 'Pokemon'> {}
 
@@ -25,7 +25,7 @@ export const PokemonDetailScreen = ({route}: Props) => {
   const {id, name} = simplePokemon;
   const {top} = useSafeAreaInsets();
 
-  const {isLoading, pokemon, details} = usePokemon(id.toString());
+  const {isLoading, pokemon, details, evolutions} = usePokemon(id.toString());
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
       {/* Head Containerr */}
@@ -64,14 +64,15 @@ export const PokemonDetailScreen = ({route}: Props) => {
             <Text style={styles.idPokemon}>{'#' + pokemon.id}</Text>
             <View style={styles.chips}>
               {pokemon.types.map(({type}) => (
-                <Chip
+                <View
+                  key={type.name}
                   style={{
-                    ...styles.regularText,
-                    marginRight: 10,
-                  }}
-                  key={type.name}>
-                  {type.name}
-                </Chip>
+                    ...styles.containChip,
+                    backgroundColor: ColorsType[type.name] || '#fff',
+                    borderColor: ColorsType[type.name] || '#fff',
+                  }}>
+                  <Text style={styles.type}>{type.name}</Text>
+                </View>
               ))}
             </View>
           </>
@@ -83,7 +84,11 @@ export const PokemonDetailScreen = ({route}: Props) => {
       </View>
 
       {/* Detalles y Loading */}
-      {isLoading ? <Loading /> : <PokemonDetails pokemon={pokemon} />}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <PokemonDetails pokemon={pokemon} evolutions={evolutions} />
+      )}
     </SafeAreaView>
   );
 };
@@ -133,15 +138,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     color: COLORS.greyLight,
   },
+  regularText: {
+    fontSize: 16,
+    color: 'white',
+    fontWeight: '400',
+  },
   chips: {
     marginVertical: 6,
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'center',
   },
-  regularText: {
-    fontSize: 16,
+  containChip: {
+    marginRight: 10,
+    paddingHorizontal: 10,
+    borderRadius: 95,
+    width: 71,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'red',
+    borderWidth: 1,
+  },
+  type: {
     color: 'white',
-    fontWeight: '400',
+    fontSize: 12,
   },
 });

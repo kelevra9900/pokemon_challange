@@ -6,10 +6,11 @@ import {ScrollView} from 'react-native-gesture-handler';
 import HeightIcon from '../assets/Icon/Height.svg';
 import WeightIcon from '../assets/Icon/Weight.svg';
 import {FadeInImage} from './ui/FadeImage';
-import {DetailPokemon} from '../interfaces/index';
+import {DetailPokemon, Chain} from '../interfaces/index';
 
 interface Props {
   pokemon: DetailPokemon;
+  evolutions: Chain[];
 }
 
 export const PokemonDetails = ({pokemon}: Props) => {
