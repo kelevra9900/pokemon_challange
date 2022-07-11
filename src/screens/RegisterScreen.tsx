@@ -6,14 +6,13 @@ import {
   TouchableOpacity,
   Alert,
   Keyboard,
-  StyleSheet,
   SafeAreaView,
 } from 'react-native';
 
 import {useForm} from '../hooks/useForm';
+import {registerTheme as styles} from '../theme/registerTheme';
 import {AuthContext} from '../context/AuthContext';
 import Input from '../components/ui/Input';
-import COLORS from '../utils/colors';
 
 export const RegisterScreen = () => {
   const {signUp, errorMessage, removeError} = useContext(AuthContext);
@@ -142,35 +141,3 @@ export const RegisterScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.black,
-  },
-  form: {
-    flex: 1,
-    backgroundColor: COLORS.black,
-    marginHorizontal: 16,
-    marginTop: 49,
-  },
-  registerButton: {
-    marginVertical: 16,
-    backgroundColor: COLORS.blue00,
-    height: 48,
-    alignContent: 'center',
-    justifyContent: 'center',
-    borderRadius: 6,
-  },
-  textLogin: {
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
-    color: COLORS.white,
-  },
-  textRegister: {
-    textAlign: 'center',
-    color: COLORS.blue00,
-    textDecorationLine: 'underline',
-  },
-});

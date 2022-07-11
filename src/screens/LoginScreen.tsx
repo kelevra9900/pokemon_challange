@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   Keyboard,
   Alert,
-  StyleSheet,
   Text,
   TouchableOpacity,
 } from 'react-native';
@@ -17,10 +16,10 @@ import {AuthContext} from '../context/AuthContext';
 
 import WhiteLogo from '../components/WhiteLogo';
 import Input from '../components/ui/Input';
+import {loginStyle as styles} from '../theme/loginTheme';
 
 import LockIcon from '../assets/Icon/Lock.svg';
 import EmailIcon from '../assets/Icon/Email.svg';
-import COLORS from '../utils/colors';
 
 type mainScreenProp = StackNavigationProp<any, 'Main'>;
 
@@ -126,42 +125,3 @@ export const LoginScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.black,
-  },
-  logo: {
-    flex: 1,
-    marginTop: 20,
-  },
-  form: {
-    flex: 1,
-    backgroundColor: COLORS.black,
-    marginHorizontal: 16,
-  },
-  loginButton: {
-    marginVertical: 16,
-    backgroundColor: COLORS.blue00,
-    height: 48,
-    alignContent: 'center',
-    justifyContent: 'center',
-    borderRadius: 6,
-  },
-  textLogin: {
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
-    color: COLORS.white,
-  },
-  registerButton: {
-    marginHorizontal: 16,
-    color: 'red',
-  },
-  textRegister: {
-    textAlign: 'center',
-    color: COLORS.blue00,
-    textDecorationLine: 'underline',
-  },
-});

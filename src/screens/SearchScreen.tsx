@@ -5,19 +5,17 @@ import {
   View,
   Text,
   FlatList,
-  StyleSheet,
   TouchableOpacity,
   SafeAreaView,
   TextInput,
 } from 'react-native';
-import {ListPokemon} from '../components/ListPokemon';
-
-import {Loading} from '../components/ui/Loading';
 import {usePokemonSearch} from '../hooks/usePokemonSearch';
-import {Pokemon} from '../interfaces/index';
-// import SearchIcon from '../assets/Icon/Search.svg';
+import {searchTheme as styles} from '../theme/searchTheme';
+import {ListPokemon} from '../components/ListPokemon';
+import {Loading} from '../components/ui/Loading';
 import {EmptySearch} from '../components/EmptySearch';
-import COLORS from '../utils/colors';
+
+import {Pokemon} from '../interfaces/index';
 
 export const SearchScreen = () => {
   const {isFetching, simplePokemonList} = usePokemonSearch();
@@ -94,40 +92,3 @@ export const SearchScreen = () => {
     </SafeAreaView>
   );
 };
-
-export const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    backgroundColor: '#111111',
-  },
-  cancel: {
-    color: '#fff',
-    fontSize: 14,
-    marginTop: 10,
-  },
-  searchContent: {
-    marginHorizontal: 10,
-    flexDirection: 'row',
-  },
-  searchInput: {
-    backgroundColor: '#fff',
-    borderRadius: 6,
-    height: 44,
-    paddingHorizontal: 10,
-    color: COLORS.black,
-    marginTop: 10,
-  },
-  cancelContent: {
-    marginLeft: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  globalMargin: {
-    marginHorizontal: 20,
-  },
-  title: {
-    fontSize: 29,
-    fontWeight: 'bold',
-    color: COLORS.white,
-  },
-});
