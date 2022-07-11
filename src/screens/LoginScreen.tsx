@@ -41,7 +41,7 @@ export const LoginScreen = () => {
       return;
     }
 
-    Alert.alert('Login incorrecto', errorMessage, [
+    Alert.alert('Try again', errorMessage, [
       {
         text: 'Ok',
         onPress: removeError,
