@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Pokemon} from '../interfaces';
 import {FadeInImage} from './ui/FadeImage';
+import {capitalize} from '../utils/capitalize';
 
 const windowWidth = Dimensions.get('window').width;
 type Props = {
@@ -42,7 +43,7 @@ export const PokemonCard = ({pokemon}: Props) => {
           }}>
           <FadeInImage uri={pokemon.image} style={styles.pokemonImage} />
           <View style={styles.textContent}>
-            <Text style={styles.name}>{pokemon.name}</Text>
+            <Text style={styles.name}>{capitalize(pokemon.name)}</Text>
             <Text style={styles.idPokemon}>{'#0' + pokemon.id}</Text>
           </View>
         </View>

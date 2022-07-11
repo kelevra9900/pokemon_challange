@@ -100,7 +100,6 @@ export const AuthProvider = ({children}: any) => {
       await AsyncStorage.setItem('token', data.access_token);
       await AsyncStorage.setItem('user', JSON.stringify(data.user));
     } catch (error: any) {
-      console.log('Error ::>:>:>:>:>', error.response.data);
       dispatch({
         type: 'addError',
         payload:

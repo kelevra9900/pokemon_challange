@@ -368,3 +368,45 @@ export interface Species {
   name: string;
   url: string;
 }
+
+export interface GetEvo {
+  abilities: Abilities;
+  description: string;
+  eggGroups: string[];
+  family: Family;
+  gen: number;
+  gender: number[];
+  height: string;
+  legendary: boolean;
+  mega: boolean;
+  mythical: boolean;
+  name: string;
+  number: string;
+  species: string;
+  sprite: string;
+  starter: boolean;
+  types: string[];
+  ultraBeast: boolean;
+  weight: string;
+}
+
+export interface Abilities {
+  hidden: any[];
+  normal: any[];
+}
+
+export interface Family {
+  evolutionLine: any[];
+  evolutionStage: number;
+  id: number;
+}
+
+export interface Evolutions {
+  evolutions: Evo[];
+}
+
+export interface Evo {
+  name: string;
+  url: string;
+  image: string;
+}

@@ -6,14 +6,15 @@ import {ScrollView} from 'react-native-gesture-handler';
 import HeightIcon from '../assets/Icon/Height.svg';
 import WeightIcon from '../assets/Icon/Weight.svg';
 import {FadeInImage} from './ui/FadeImage';
-import {DetailPokemon, Chain} from '../interfaces/index';
+import {DetailPokemon, Evo} from '../interfaces/index';
+import {capitalize} from '../utils/capitalize';
 
 interface Props {
   pokemon: DetailPokemon;
-  evolutions: Chain[];
+  evolutions: Evo[];
 }
 
-export const PokemonDetails = ({pokemon}: Props) => {
+export const PokemonDetails = ({pokemon, evolutions}: Props) => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -52,25 +53,12 @@ export const PokemonDetails = ({pokemon}: Props) => {
 
       {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> */}
       <View style={styles.contentEvo}>
-        <FadeInImage
-          uri={pokemon.sprites.front_default}
-          style={styles.basicSprite}
-        />
-
-        <FadeInImage
-          uri={pokemon.sprites.back_default}
-          style={styles.basicSprite}
-        />
-
-        <FadeInImage
-          uri={pokemon.sprites.front_shiny}
-          style={styles.basicSprite}
-        />
-
-        <FadeInImage
-          uri={pokemon.sprites.back_shiny}
-          style={styles.basicSprite}
-        />
+        {evolutions.map((evo, index) => (
+          <View key={index}>
+            <FadeInImage uri={evo.image} style={styles.basicSprite} />
+            <Text style={styles.evoName}>{capitalize(evo.name)}</Text>
+          </View>
+        ))}
       </View>
       {/* </ScrollView> */}
     </ScrollView>
@@ -117,5 +105,10 @@ const styles = StyleSheet.create({
   basicSprite: {
     width: 100,
     height: 65,
+  },
+  evoName: {
+    fontSize: 14,
+    fontWeight: '400',
+    textAlign: 'center',
   },
 });

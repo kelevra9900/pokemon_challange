@@ -17,6 +17,7 @@ import {PokemonDetails} from '../components/PokemonDetail';
 import COLORS from '../utils/colors';
 import {Loading} from '../components/ui/Loading';
 import {ColorsType} from '../utils/color_types';
+import {capitalize} from '../utils/capitalize';
 
 interface Props extends StackScreenProps<any, 'Pokemon'> {}
 
@@ -50,7 +51,7 @@ export const PokemonDetailScreen = ({route}: Props) => {
               ...styles.pokemonName,
               top: top - 7,
             }}>
-            {name}
+            {capitalize(name)}
           </Text>
         </View>
         {/* Chips type */}
