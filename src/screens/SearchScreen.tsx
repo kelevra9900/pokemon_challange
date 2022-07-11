@@ -24,7 +24,7 @@ export const SearchScreen = () => {
 
   const [pokemonFiltered, setPokemonFiltered] = useState<Pokemon[]>([]);
 
-  const [term, setTerm] = useState('eee');
+  const [term, setTerm] = useState('');
 
   useEffect(() => {
     if (term.length === 0) {

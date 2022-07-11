@@ -60,7 +60,7 @@ export const PokemonDetailScreen = ({route}: Props) => {
             <ActivityIndicator color={color} size={50} />
           </View>
         ) : (
-          <>
+          <View style={{flex: 1, top: top + 2}}>
             {/* Pokemon ID */}
             <Text style={styles.idPokemon}>{'#' + pokemon.id}</Text>
             <View style={styles.chips}>
@@ -76,10 +76,10 @@ export const PokemonDetailScreen = ({route}: Props) => {
                 </View>
               ))}
             </View>
-          </>
+          </View>
         )}
         {/* Pokemon Description */}
-        <View style={styles.description}>
+        <View style={{...styles.description, top: top + 30}}>
           <Text style={styles.textDescription}>{details}</Text>
         </View>
       </View>
