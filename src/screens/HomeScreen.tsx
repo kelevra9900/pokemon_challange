@@ -1,18 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {
-  View,
-  Dimensions,
-  Platform,
-  FlatList,
-  ActivityIndicator,
-} from 'react-native';
+import {View, Dimensions, Platform, FlatList} from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {PokemonCard} from '../components/PokemonCard';
 import {usePokemons} from '../hooks/usePokemons';
 import {SearchInput} from '../components/SearchInput';
+import {Loading} from '../components/ui/Loading';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -44,9 +39,7 @@ export const HomeScreen = () => {
         renderItem={({item}) => <PokemonCard pokemon={item} />}
         onEndReached={loadPokemons}
         onEndReachedThreshold={0.4}
-        ListFooterComponent={
-          <ActivityIndicator style={{height: 100}} size={120} color="white" />
-        }
+        ListFooterComponent={<Loading />}
       />
     </View>
   );

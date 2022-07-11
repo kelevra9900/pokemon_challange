@@ -104,6 +104,7 @@ export const LoginScreen = () => {
           error={errors.password}
           value={password}
           onSubmitEditing={handleLogin}
+          secureTextEntry={true}
         />
 
         {/* Custon Button login */}

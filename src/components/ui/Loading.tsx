@@ -5,7 +5,7 @@ export const Loading = () => {
   return (
     <View style={styles.activityContainer}>
       <Image source={require('../../assets/pika_loader.gif')} />
-      <Text>Cargando...</Text>
+      <Text style={styles.text}>Cargando...</Text>
     </View>
   );
 };
@@ -16,5 +16,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#111111',
+  },
+  text: {
+    marginTop: 3,
   },
 });
