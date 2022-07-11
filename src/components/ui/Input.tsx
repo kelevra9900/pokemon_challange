@@ -1,47 +1,87 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
+import COLORS from '../../utils/colors';
 
 type Props = {
   placeholder?: string;
-  placeholderTextColor?: string;
   secureTextEntry?: boolean;
-  autoCorrect?: boolean;
   icon?: React.ReactElement;
-  onChangeText?: any;
-  onSubmitEditing?: any;
+  onChangeText: (text: string) => void;
   value: string;
-  styles?: any;
+  error?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
   testID?: string;
+  onSubmitEditing?: () => void;
 };
-export const InputComponent = (props: Props) => {
+
+const Input = ({
+  placeholder,
+  error,
+  icon,
+  value,
+  secureTextEntry,
+  testID,
+  onSubmitEditing,
+  onFocus = () => {},
+  ...props
+}: Props) => {
+  const [isFocused, setIsFocused] = React.useState(false);
+
   return (
-    <View style={styles.container} {...props.styles}>
-      {props.icon}
-      <TextInput {...props} style={styles.input} testID={props.testID} />
+    <View style={{marginBottom: 16}}>
+      <View
+        style={[
+          style.inputContainer,
+          {
+            borderColor: error
+              ? COLORS.error
+              : isFocused
+              ? COLORS.darkBlue
+              : COLORS.light,
+            alignItems: 'center',
+          },
+        ]}>
+        {/* <Icon
+          name={iconName}
+          style={{color: COLORS.darkBlue, fontSize: 22, marginRight: 10}}
+        /> */}
+        {icon}
+        <TextInput
+          autoCorrect={false}
+          onFocus={() => {
+            onFocus();
+            setIsFocused(true);
+          }}
+          placeholder={placeholder}
+          placeholderTextColor={COLORS.placeholder}
+          onBlur={() => setIsFocused(false)}
+          secureTextEntry={secureTextEntry}
+          style={{flex: 1, color: COLORS.black}}
+          value={value}
+          testID={testID}
+          onSubmitEditing={onSubmitEditing}
+          {...props}
+        />
+      </View>
+      {error && (
+        <Text style={{marginTop: 7, color: COLORS.error, fontSize: 12}}>
+          {error}
+        </Text>
+      )}
     </View>
   );
 };
 
-export const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#F3F1F3',
+const style = StyleSheet.create({
+  inputContainer: {
+    height: 44,
     borderRadius: 6,
-    marginTop: 20,
-    height: 40,
-    paddingHorizontal: 20,
-    alignItems: 'center',
+    backgroundColor: COLORS.light,
     flexDirection: 'row',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  input: {
-    color: '#000',
-    marginLeft: 5,
+    paddingHorizontal: 15,
   },
 });
+
+export default Input;

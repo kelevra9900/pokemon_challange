@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import LogoutIcon from '../assets/Icon/Log-out.svg';
 import {AuthContext} from '../context/AuthContext';
 import {Background} from '../components/Background';
+import COLORS from '../utils/colors';
 
 interface Props extends StackScreenProps<any, 'PokemonScreen'> {}
 
@@ -31,14 +32,14 @@ export const ProfileScreen = ({navigation}: Props) => {
             ...styles.backButton,
             top: top + 10,
           }}>
-          <Icon name="angle-left" size={45} color="#fff" />
+          <Icon name="angle-left" size={45} color={COLORS.white} />
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <Avatar.Text
           size={100}
           label={initials}
-          color="#fff"
+          color={COLORS.white}
           style={styles.avatar}
         />
         <Text style={styles.text}>{user?.name}</Text>
@@ -56,13 +57,13 @@ export const ProfileScreen = ({navigation}: Props) => {
 const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
-    backgroundColor: '#111111',
+    backgroundColor: COLORS.black,
     marginTop: 20,
   },
   avatar: {
     alignContent: 'center',
     textAlign: 'center',
-    backgroundColor: '#2c2c2c',
+    backgroundColor: COLORS.grey,
     borderColor: '#4F4F4F',
     borderWidth: 1,
   },
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 18,
     fontWeight: '600',
-    color: '#fff',
+    color: COLORS.white,
   },
   signOutBtn: {
     marginTop: 40,
@@ -83,12 +84,12 @@ const styles = StyleSheet.create({
   },
   email: {
     marginTop: 10,
-    color: '#828282',
+    color: COLORS.greyLight,
     fontSize: 16,
     fontWeight: '400',
   },
   signOut: {
-    color: '#2F80ED',
+    color: COLORS.blue00,
     fontSize: 16,
     fontWeight: '400',
     textDecorationLine: 'underline',

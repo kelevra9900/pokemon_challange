@@ -1,19 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 export const loginStyles = StyleSheet.create({
-  main: {
-    flex: 1,
-    backgroundColor: '#111111',
-  },
   formContainer: {
     flex: 1,
-    paddingHorizontal: 10,
-    justifyContent: 'center',
-    marginHorizontal: 16,
+    backgroundColor: '#111111',
     height: 600,
-  },
-  content: {
-    flex: 1,
   },
   inputContainer: {
     backgroundColor: '#F3F1F3',
@@ -54,7 +45,14 @@ export const loginStyles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: 'center',
-    marginTop: 30,
+    height: 48,
+    marginTop: 20,
+  },
+  logo: {
+    flex: 1,
+  },
+  contentInputs: {
+    flex: 1,
   },
   button: {
     backgroundColor: '#2F80ED',

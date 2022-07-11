@@ -19,12 +19,12 @@ export const Button = ({onPress, testID}: Props) => {
 export const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: 20,
   },
   button: {
     backgroundColor: '#2F80ED',
-    width: '100%',
-    height: 48,
+    width: 30,
+    height: 58,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,

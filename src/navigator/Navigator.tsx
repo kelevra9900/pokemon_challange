@@ -10,6 +10,9 @@ import {ProfileScreen} from '../screens/ProfileScreen';
 import {SearchScreen} from '../screens/SearchScreen';
 import {PokemonDetailScreen} from '../screens/PokemonDetailScreen';
 
+import BackButton from '../assets/Icon/Chevron-Left.svg';
+import {HeaderRegister} from '../components/ui/HeaderRegister';
+
 const Stack = createStackNavigator();
 
 export const Navigator = () => {
@@ -28,7 +31,21 @@ export const Navigator = () => {
         <>
           {/* <Stack.Screen name="SplashScreen" component={SplashScreen} /> */}
           <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{
+              headerShown: true,
+              headerTitle: () => <HeaderRegister />,
+              headerStyle: {
+                backgroundColor: '#111111',
+                elevation: 0,
+              },
+              headerTitleAlign: 'center',
+              headerTintColor: '#ffffff',
+              headerBackImage: () => <BackButton />,
+            }}
+          />
         </>
       ) : (
         <>

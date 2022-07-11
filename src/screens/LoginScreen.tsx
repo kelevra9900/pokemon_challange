@@ -1,32 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-native/no-inline-styles */
 import React, {useContext, useEffect} from 'react';
 import {
   View,
-  Platform,
-  KeyboardAvoidingView,
-  Text,
-  TouchableOpacity,
   SafeAreaView,
   Keyboard,
   Alert,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/native';
 
+import {useForm} from '../hooks/useForm';
 import {AuthContext} from '../context/AuthContext';
+
+import WhiteLogo from '../components/WhiteLogo';
+import Input from '../components/ui/Input';
 
 import LockIcon from '../assets/Icon/Lock.svg';
 import EmailIcon from '../assets/Icon/Email.svg';
-import WhiteLogo from '../components/WhiteLogo';
-import {loginStyles} from '../theme/loginTheme';
-import {Button} from '../components/ui/Button';
-import {InputComponent} from '../components/ui/Input';
-import {useForm} from '../hooks/useForm';
+import COLORS from '../utils/colors';
 
 type mainScreenProp = StackNavigationProp<any, 'Main'>;
 
 export const LoginScreen = () => {
+  const [loading, setLoading] = React.useState(false);
+  const [errors, setErrors] = React.useState<any>({});
   const {signIn, errorMessage, removeError} = useContext(AuthContext);
 
   const {email, password, onChange} = useForm({
@@ -50,64 +50,117 @@ export const LoginScreen = () => {
   }, [errorMessage]);
 
   const handleLogin = () => {
+    setLoading(true);
     Keyboard.dismiss();
     signIn({email, password});
+    setLoading(false);
+  };
+
+  const validate = async () => {
+    Keyboard.dismiss();
+    let isValid = true;
+    if (!email) {
+      handleError('The email field is required', 'email');
+      isValid = false;
+    }
+    if (!password) {
+      handleError('The password field is required', 'password');
+      isValid = false;
+    }
+    if (isValid) {
+      handleLogin();
+    }
+  };
+
+  const handleError = (error: any, input: any) => {
+    setErrors((prevState: any) => ({...prevState, [input]: error}));
   };
 
   return (
-    <View testID="login-page">
-      <KeyboardAvoidingView
-        style={{flex: 1}}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <SafeAreaView style={loginStyles.formContainer}>
-          {/* Logo */}
-          <WhiteLogo />
-          {/* Form View */}
-          <View style={loginStyles.content}>
-            {/* Input Email */}
-            <InputComponent
-              icon={<EmailIcon width={22} height={22} />}
-              placeholder="Email"
-              placeholderTextColor="#828282"
-              onChangeText={(value: string) => onChange(value, 'email')}
-              value={email}
-              onSubmitEditing={handleLogin}
-              autoCorrect={false}
-              testID="email-input"
-            />
+    <SafeAreaView testID="login-page" style={styles.container}>
+      {/* White Logo */}
+      <View style={styles.logo}>
+        <WhiteLogo />
+      </View>
 
-            {/* Input Password */}
-            <InputComponent
-              placeholder="Password"
-              placeholderTextColor="#828282"
-              secureTextEntry={true}
-              autoCorrect={false}
-              onChangeText={(value: string) => onChange(value, 'password')}
-              value={password}
-              onSubmitEditing={handleLogin}
-              icon={<LockIcon width={22} height={22} />}
-              testID="password-input"
-            />
+      <View style={styles.form}>
+        {/* Input Email */}
+        <Input
+          onChangeText={(value: string) => onChange(value, 'email')}
+          onFocus={() => handleError(null, 'email')}
+          placeholder="Email"
+          icon={<EmailIcon />}
+          error={errors.email}
+          value={email}
+          onSubmitEditing={handleLogin}
+        />
 
-            {/* login button */}
-            <View style={loginStyles.buttonContainer}>
-              <TouchableOpacity
-                activeOpacity={0.8}
-                style={loginStyles.button}
-                testID="login-button"
-                onPress={handleLogin}>
-                <Text style={loginStyles.buttonText}>Log In</Text>
-              </TouchableOpacity>
-            </View>
+        {/* Input password */}
+        <Input
+          onChangeText={(value: string) => onChange(value, 'password')}
+          onFocus={() => handleError(null, 'password')}
+          placeholder="Password"
+          icon={<LockIcon />}
+          error={errors.password}
+          value={password}
+          onSubmitEditing={handleLogin}
+        />
 
-            {/* Crear una nueva cuenta */}
-            <Button
-              testID="navigate-to-register"
-              onPress={() => navigation.push('Register')}
-            />
-          </View>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    </View>
+        {/* Custon Button login */}
+        <TouchableOpacity
+          style={styles.loginButton}
+          disabled={loading}
+          onPress={validate}>
+          <Text style={styles.textLogin}>Log In</Text>
+        </TouchableOpacity>
+
+        {/* Create account button */}
+        <TouchableOpacity
+          style={styles.registerButton}
+          testID="navigate-to-register"
+          onPress={() => navigation.navigate('Register')}>
+          <Text style={styles.textRegister}>Create an account</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.black,
+  },
+  logo: {
+    flex: 1,
+    marginTop: 20,
+  },
+  form: {
+    flex: 1,
+    backgroundColor: COLORS.black,
+    marginHorizontal: 16,
+  },
+  loginButton: {
+    marginVertical: 16,
+    backgroundColor: COLORS.blue00,
+    height: 48,
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderRadius: 6,
+  },
+  textLogin: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '600',
+    color: COLORS.white,
+  },
+  registerButton: {
+    marginHorizontal: 16,
+    color: 'red',
+  },
+  textRegister: {
+    textAlign: 'center',
+    color: COLORS.blue00,
+    textDecorationLine: 'underline',
+  },
+});
