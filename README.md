@@ -18,9 +18,13 @@ npm install
 
 ## Check out the App
 
+- [Firstscreens]
+
 | Login | Register | Home | 
 |-----------|----------------|----------------|
 | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/1.png) | ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/2.png)| ![](https://github.com/kelevra9900/pokemon_challange/blob/main/screenshots/3.png)|
+
+- [Pokemon]
 
 | Search | Profile | Detail | 
 |-----------|----------------|----------------|
