@@ -5,7 +5,7 @@ export const useAnimation = () => {
   const opacity = useRef(new Animated.Value(0)).current;
   const position = useRef(new Animated.Value(0)).current;
 
-  const fadeIn = (duration: number = 300) => {
+  const fadeIn = (duration = 300) => {
     Animated.timing(opacity, {
       toValue: 1,
       duration,
@@ -23,7 +23,7 @@ export const useAnimation = () => {
 
   const startMovingPosition = (
     initPosition: number,
-    duration: number = 300,
+    duration = 300,
   ) => {
     position.setValue(initPosition);
 

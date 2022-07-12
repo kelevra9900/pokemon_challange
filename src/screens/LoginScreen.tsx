@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useEffect} from 'react';
 import {
   View,
@@ -23,9 +22,14 @@ import EmailIcon from '../assets/Icon/Email.svg';
 
 type mainScreenProp = StackNavigationProp<any, 'Main'>;
 
+type ErrorProps = {
+  error: string;
+  email: string;
+  password: string;
+}
 export const LoginScreen = () => {
   const [loading, setLoading] = React.useState(false);
-  const [errors, setErrors] = React.useState<any>({});
+  const [errors, setErrors] = React.useState<ErrorProps>({} as ErrorProps);
   const {signIn, errorMessage, removeError} = useContext(AuthContext);
 
   const {email, password, onChange} = useForm({

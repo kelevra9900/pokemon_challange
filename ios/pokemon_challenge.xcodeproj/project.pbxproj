@@ -11,9 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		67C033B2D2A84790D3BD7387 /* libPods-pokemon_challenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D39B437BA8BFF10E2CCDFAB4 /* libPods-pokemon_challenge.a */; };
+		6359771D2AEAD9679D2C4272 /* libPods-pokemon_challenge-pokemon_challengeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C536A0F5EA3E6208F7703A3B /* libPods-pokemon_challenge-pokemon_challengeTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9780D3CAFF85840961B3746F /* libPods-pokemon_challenge-pokemon_challengeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69C8DF3102A4E76BB11E1E0 /* libPods-pokemon_challenge-pokemon_challengeTests.a */; };
+		A6ADE58C26649F37289FFE17 /* libPods-pokemon_challenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21863E3E7BB2F3F51BE168B0 /* libPods-pokemon_challenge.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,25 +30,25 @@
 		00E356EE1AD99517003FC87E /* pokemon_challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pokemon_challengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* pokemon_challengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pokemon_challengeTests.m; sourceTree = "<group>"; };
-		0BE9B573DA5068E978CE51B5 /* Pods-pokemon_challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemon_challenge.release.xcconfig"; path = "Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* pokemon_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokemon_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = pokemon_challenge/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = pokemon_challenge/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = pokemon_challenge/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = pokemon_challenge/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = pokemon_challenge/main.m; sourceTree = "<group>"; };
+		1E0EB5A990EB6C0C242F600A /* Pods-pokemon_challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemon_challenge.debug.xcconfig"; path = "Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge.debug.xcconfig"; sourceTree = "<group>"; };
+		21863E3E7BB2F3F51BE168B0 /* libPods-pokemon_challenge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pokemon_challenge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3D42BF2877CA670047D615 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		3A3D42C12877CAA50047D615 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		3A516E88287A731F005E2417 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		3A516E8A287A7326005E2417 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		3A516E8C287A732F005E2417 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		3A516E8E287A7336005E2417 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		3B84C311AA327ED5BC23EADA /* Pods-pokemon_challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemon_challenge.debug.xcconfig"; path = "Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge.debug.xcconfig"; sourceTree = "<group>"; };
+		5B48CC43E90CBF50863CE67D /* Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig"; path = "Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = pokemon_challenge/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		92D5327ABF97FCF27D626E2D /* Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig"; path = "Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A69C8DF3102A4E76BB11E1E0 /* libPods-pokemon_challenge-pokemon_challengeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pokemon_challenge-pokemon_challengeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A848893B26F7189AAD244117 /* Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig"; path = "Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig"; sourceTree = "<group>"; };
-		D39B437BA8BFF10E2CCDFAB4 /* libPods-pokemon_challenge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pokemon_challenge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85ECCF16FB8CA09417E2EBF8 /* Pods-pokemon_challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemon_challenge.release.xcconfig"; path = "Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge.release.xcconfig"; sourceTree = "<group>"; };
+		C08BEFAB8256119DA0D58665 /* Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig"; path = "Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C536A0F5EA3E6208F7703A3B /* libPods-pokemon_challenge-pokemon_challengeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pokemon_challenge-pokemon_challengeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9780D3CAFF85840961B3746F /* libPods-pokemon_challenge-pokemon_challengeTests.a in Frameworks */,
+				6359771D2AEAD9679D2C4272 /* libPods-pokemon_challenge-pokemon_challengeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67C033B2D2A84790D3BD7387 /* libPods-pokemon_challenge.a in Frameworks */,
+				A6ADE58C26649F37289FFE17 /* libPods-pokemon_challenge.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				D39B437BA8BFF10E2CCDFAB4 /* libPods-pokemon_challenge.a */,
-				A69C8DF3102A4E76BB11E1E0 /* libPods-pokemon_challenge-pokemon_challengeTests.a */,
+				21863E3E7BB2F3F51BE168B0 /* libPods-pokemon_challenge.a */,
+				C536A0F5EA3E6208F7703A3B /* libPods-pokemon_challenge-pokemon_challengeTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,10 +160,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B84C311AA327ED5BC23EADA /* Pods-pokemon_challenge.debug.xcconfig */,
-				0BE9B573DA5068E978CE51B5 /* Pods-pokemon_challenge.release.xcconfig */,
-				92D5327ABF97FCF27D626E2D /* Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig */,
-				A848893B26F7189AAD244117 /* Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig */,
+				1E0EB5A990EB6C0C242F600A /* Pods-pokemon_challenge.debug.xcconfig */,
+				85ECCF16FB8CA09417E2EBF8 /* Pods-pokemon_challenge.release.xcconfig */,
+				C08BEFAB8256119DA0D58665 /* Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig */,
+				5B48CC43E90CBF50863CE67D /* Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -175,12 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "pokemon_challengeTests" */;
 			buildPhases = (
-				8FD9B342CC9519F66D838881 /* [CP] Check Pods Manifest.lock */,
+				434FAB4F9EBDBA7898A0B71B /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				E828195B1A9E067883AC5384 /* [CP] Embed Pods Frameworks */,
-				98AB61195FE20F11E02D1FEA /* [CP] Copy Pods Resources */,
+				4B52AA32A0B8E6225DD14D27 /* [CP] Embed Pods Frameworks */,
+				3D0F0736A2172CE4D481463E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,14 +196,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "pokemon_challenge" */;
 			buildPhases = (
-				B07A98E1897F27F46A963739 /* [CP] Check Pods Manifest.lock */,
+				1A1596926769920EAE40988E /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				A1F76943DD2613CC93A88183 /* [CP] Embed Pods Frameworks */,
-				3BAC2D560C214BBD8BD036E2 /* [CP] Copy Pods Resources */,
+				A612DED0806490C1A8A0481B /* [CP] Embed Pods Frameworks */,
+				20F554AEC123AD64F369136D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,80 +286,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		3BAC2D560C214BBD8BD036E2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8FD9B342CC9519F66D838881 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-pokemon_challenge-pokemon_challengeTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		98AB61195FE20F11E02D1FEA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A1F76943DD2613CC93A88183 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B07A98E1897F27F46A963739 /* [CP] Check Pods Manifest.lock */ = {
+		1A1596926769920EAE40988E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -381,7 +308,63 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E828195B1A9E067883AC5384 /* [CP] Embed Pods Frameworks */ = {
+		20F554AEC123AD64F369136D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D0F0736A2172CE4D481463E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		434FAB4F9EBDBA7898A0B71B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pokemon_challenge-pokemon_challengeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B52AA32A0B8E6225DD14D27 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -396,6 +379,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge-pokemon_challengeTests/Pods-pokemon_challenge-pokemon_challengeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A612DED0806490C1A8A0481B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pokemon_challenge/Pods-pokemon_challenge-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -450,7 +450,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92D5327ABF97FCF27D626E2D /* Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig */;
+			baseConfigurationReference = C08BEFAB8256119DA0D58665 /* Pods-pokemon_challenge-pokemon_challengeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -477,7 +477,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A848893B26F7189AAD244117 /* Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig */;
+			baseConfigurationReference = 5B48CC43E90CBF50863CE67D /* Pods-pokemon_challenge-pokemon_challengeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -501,12 +501,13 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B84C311AA327ED5BC23EADA /* Pods-pokemon_challenge.debug.xcconfig */;
+			baseConfigurationReference = 1E0EB5A990EB6C0C242F600A /* Pods-pokemon_challenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				INFOPLIST_FILE = pokemon_challenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -527,7 +528,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BE9B573DA5068E978CE51B5 /* Pods-pokemon_challenge.release.xcconfig */;
+			baseConfigurationReference = 85ECCF16FB8CA09417E2EBF8 /* Pods-pokemon_challenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

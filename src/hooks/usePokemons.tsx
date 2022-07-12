@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {useEffect, useRef, useState} from 'react';
 import {PokemonsResponse, Pokemon} from '../interfaces';
 import restApi from '../api';
@@ -14,7 +13,7 @@ export const usePokemons = () => {
     setIsLoading(true);
     const resp = await restApi.get<PokemonsResponse>(url.current);
     let api = 'https://challenge.butchershop.co/api/v1/pokemons';
-    let newUrl = resp.data.next.replace(
+    const newUrl: string = resp.data.next.replace(
       'https://pokeapi.co/api/v2/pokemon',
       '',
     );

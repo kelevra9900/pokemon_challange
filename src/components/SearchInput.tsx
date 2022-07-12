@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   StyleSheet,
@@ -9,6 +8,7 @@ import {
   Text,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import SearchIcon from '../assets/Icon/Search.svg';
 import UserIcon from '../assets/Icon/User.svg';
@@ -17,14 +17,21 @@ interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
+type StackParam = {
+  Search: undefined;
+  Profile: undefined,
+}
+
+type NavigationProps = StackNavigationProp<StackParam>
+
 export const SearchInput = ({style}: Props) => {
-  const navigation: any = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
 
   return (
     <View
       style={{
         ...styles.container,
-        ...(style as any),
+        ...(style as ViewStyle),
       }}>
       <View style={styles.item}>
         <TouchableOpacity

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import {useState} from 'react';
 
 export const useForm = <T extends Object>(initState: T) => {

@@ -1,6 +1,5 @@
 /* eslint-disale react-hooks/exhaustive-deps */
 import React from 'react';
-import {useNavigation} from '@react-navigation/core';
 import {
   View,
   TouchableOpacity,
@@ -9,16 +8,25 @@ import {
   Text,
   Image,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+
 import {Pokemon} from '../interfaces';
 import {FadeInImage} from './ui/FadeImage';
 import {capitalize} from '../utils/capitalize';
+
+type StackParam = {
+  Pokemon: { simplePokemon: Pokemon, color: string };
+}
+
+type NavigationProps = StackNavigationProp<StackParam>
 
 const windowWidth = Dimensions.get('window').width;
 type Props = {
   pokemon: Pokemon;
 };
 export const PokemonCard = ({pokemon}: Props) => {
-  const navigation: any = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
 
   return (
     <View style={styles.main}>

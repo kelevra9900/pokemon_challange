@@ -43,7 +43,9 @@ export const pokemonDetailsTheme = StyleSheet.create({
     alignItems: 'center',
   },
   textDescription: {
-    justifyContent: 'center',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    marginHorizontal:20,
     color: COLORS.greyLight,
   },
   regularText: {
@@ -52,7 +54,7 @@ export const pokemonDetailsTheme = StyleSheet.create({
     fontWeight: '400',
   },
   chips: {
-    marginVertical: 6,
+    marginVertical: 30,
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'center',

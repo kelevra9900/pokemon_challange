@@ -1,5 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import {
   View,
@@ -17,6 +15,9 @@ import {EmptySearch} from '../components/EmptySearch';
 
 import {Pokemon} from '../interfaces/index';
 
+export interface RenderProps{
+  item: Pokemon;
+}
 export const SearchScreen = () => {
   const {isFetching, simplePokemonList} = usePokemonSearch();
 
@@ -55,7 +56,6 @@ export const SearchScreen = () => {
           style={{width: term === '' ? '100%' : '84%', ...styles.searchInput}}
           placeholder="Search"
           onChangeText={(value: string) => onChangeSearch(value)}
-          onSubmitEditing={() => {}}
           value={term}
         />
         {term === '' ? null : (
@@ -86,7 +86,7 @@ export const SearchScreen = () => {
               {term}
             </Text>
           }
-          renderItem={({item}: any) => <ListPokemon pokemon={item} />}
+          renderItem={({item}: RenderProps) => <ListPokemon pokemon={item} />}
         />
       )}
     </SafeAreaView>

@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import COLORS from '../../utils/colors';
@@ -9,13 +8,12 @@ type Props = {
   secureTextEntry?: boolean;
   autoCorrect?: boolean;
   icon?: React.ReactElement;
-  onChangeText?: any;
-  onSubmitEditing?: any;
-  onFocus?: any;
+  onChangeText?: (text: string) => void;
+  onFocus?:any;
   value: string;
-  styles?: any;
   testID?: string;
   error?: string;
+  onSubmitEditing?: any;
 };
 
 const Input = (props: Props) => {
@@ -43,12 +41,13 @@ const Input = (props: Props) => {
           {...props}
           autoCorrect={false}
           onFocus={() => {
-            props.onFocus();
             setIsFocused(true);
+            props.onFocus();
           }}
           placeholderTextColor={COLORS.placeholder}
           onBlur={() => setIsFocused(false)}
           style={{flex: 1, color: COLORS.black}}
+          onSubmitEditing={props.onSubmitEditing}
         />
       </View>
       {props.error && (

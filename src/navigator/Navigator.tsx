@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen} from '../screens/HomeScreen';

@@ -1,13 +1,11 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
   ActivityIndicator,
   Animated,
-  ImageErrorEventData,
   ImageStyle,
-  NativeSyntheticEvent,
   StyleProp,
   View,
+  ViewStyle,
 } from 'react-native';
 import {useAnimation} from '../../hooks/useAnimation';
 
@@ -26,7 +24,7 @@ export const FadeInImage = ({uri, style = {}, blur}: Props) => {
     fadeIn();
   };
 
-  const onError = (_err: NativeSyntheticEvent<ImageErrorEventData>) => {
+  const onError = () => {
     setIsLoading(false);
   };
 
@@ -35,7 +33,7 @@ export const FadeInImage = ({uri, style = {}, blur}: Props) => {
       style={{
         justifyContent: 'center',
         alignItems: 'center',
-        ...(style as any),
+        ...(style as ViewStyle),
       }}>
       {isLoading && (
         <ActivityIndicator
@@ -52,7 +50,7 @@ export const FadeInImage = ({uri, style = {}, blur}: Props) => {
         resizeMode="contain"
         blurRadius={blur}
         style={{
-          ...(style as any),
+          ...(style as ImageStyle),
           opacity,
         }}
       />

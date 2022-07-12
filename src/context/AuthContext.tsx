@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios, { AxiosError } from 'axios';
 import React, {createContext, useEffect, useReducer} from 'react';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import restApi from '../api';
@@ -25,6 +26,8 @@ const authInicialState: AuthState = {
   user: null,
   errorMessage: '',
 };
+
+type ServerError = { errorMessage: string };
 
 export const AuthProvider = ({children}: any) => {
   const [state, dispatch] = useReducer(authReducer, authInicialState);
@@ -99,16 +102,23 @@ export const AuthProvider = ({children}: any) => {
 
       await AsyncStorage.setItem('token', data.access_token);
       await AsyncStorage.setItem('user', JSON.stringify(data.user));
-    } catch (error: any) {
-      dispatch({
-        type: 'addError',
-        payload:
-          error.response.data?.errors?.password[0] ||
-          error.response.data?.errors?.password[1] ||
-          error.response.data?.errors?.password[2] ||
-          error.response.data?.errors?.email[0] ||
-          'Revise la información',
-      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const serverError = error as AxiosError<ServerError>;
+        if (serverError && serverError.response) {
+          return serverError.response.data;
+        }
+      }
+      return { errorMessage: "Kuch to ghotala h" };
+      // dispatch({
+      //   type: 'addError',
+      //   payload:
+      //     error.response.data?.errors?.password[0] ||
+      //     error.response.data?.errors?.password[1] ||
+      //     error.response.data?.errors?.password[2] ||
+      //     error.response.data?.errors?.email[0] ||
+      //     'Revise la información',
+      // });
     }
   };
 

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useContext, useState} from 'react';
 import {
   View,
@@ -14,9 +13,16 @@ import {registerTheme as styles} from '../theme/registerTheme';
 import {AuthContext} from '../context/AuthContext';
 import Input from '../components/ui/Input';
 
+export interface ErrorsProps {
+  name: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+}
+
 export const RegisterScreen = () => {
   const {signUp, errorMessage, removeError} = useContext(AuthContext);
-  const [errors, setErrors] = React.useState<any>({});
+  const [errors, setErrors] = React.useState<ErrorsProps>({} as ErrorsProps);
   const [loading, setLoading] = useState(false);
 
   const {name, email, password, password_confirmation, onChange} = useForm({
@@ -78,8 +84,8 @@ export const RegisterScreen = () => {
     }
   };
 
-  const handleError = (error: any, input: any) => {
-    setErrors((prevState: any) => ({...prevState, [input]: error}));
+  const handleError = (error: string | null, input: string) => {
+    setErrors((prevState: ErrorsProps) => ({...prevState, [input]: error}));
   };
 
   return (

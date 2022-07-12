@@ -1,6 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text, Image, SafeAreaView, ActivityIndicator} from 'react-native';
+import {View, Text, Image, SafeAreaView, ActivityIndicator, ScrollView, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {StackScreenProps} from '@react-navigation/stack';
 
@@ -10,20 +9,34 @@ import {PokemonDetails} from '../components/PokemonDetail';
 import {Loading} from '../components/ui/Loading';
 import {pokemonDetailsTheme as styles} from '../theme/pokemonDetailTheme';
 
-import {ColorsType} from '../utils/color_types';
+import {Colorsprops, ColorsType} from '../utils/color_types';
 import {capitalize} from '../utils/capitalize';
+import { Pokemon } from '../interfaces';
 
-interface Props extends StackScreenProps<any, 'Pokemon'> {}
+type Props = StackScreenProps<any, 'Pokemon'>
 
+type ParamsProps ={
+  simplePokemon: Pokemon;
+  color: string
+}
 export const PokemonDetailScreen = ({route}: Props) => {
-  const {simplePokemon, color} = route.params as any;
+  const {simplePokemon, color} = route.params as ParamsProps;
   const {id, name} = simplePokemon;
   const {top} = useSafeAreaInsets();
 
   const {isLoading, pokemon, details, evolutions} = usePokemon(id.toString());
+
+  console.log('pokemon', pokemon);
+  console.log('details', details);
+  console.log('evolutions', evolutions);
+  console.log('isLoading', isLoading);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
       {/* Head Containerr */}
+      <ScrollView
+            style={{
+              ...StyleSheet.absoluteFillObject,
+            }}>
       <View
         style={{
           backgroundColor: 'black',
@@ -51,29 +64,29 @@ export const PokemonDetailScreen = ({route}: Props) => {
         {/* Chips type */}
         {isLoading ? (
           <View style={styles.loadingIndicator}>
-            <ActivityIndicator color={color} size={50} />
+            <ActivityIndicator color='#ffff' size={25} />
           </View>
         ) : (
-          <View style={{flex: 1, top: top + 2}}>
+          <View style={{top: top + 2}}>
             {/* Pokemon ID */}
-            <Text style={styles.idPokemon}>{'#' + pokemon.id}</Text>
+            <Text style={styles.idPokemon}>{'#' + simplePokemon.id}</Text>
             <View style={styles.chips}>
-              {pokemon.types.map(({type}) => (
+              {pokemon?.types?.map(({type}) => (
                 <View
                   key={type.name}
                   style={{
                     ...styles.containChip,
-                    backgroundColor: ColorsType[type.name] || '#fff',
-                    borderColor: ColorsType[type.name] || '#fff',
+                    backgroundColor: ColorsType[type.name as keyof Colorsprops] || '#fff',
+                    borderColor: ColorsType[type.name as keyof Colorsprops] || '#fff',
                   }}>
-                  <Text style={styles.type}>{type.name}</Text>
+                  <Text style={styles.type}>{capitalize(type.name)}</Text>
                 </View>
               ))}
             </View>
           </View>
         )}
         {/* Pokemon Description */}
-        <View style={{...styles.description, top: top + 30}}>
+        <View style={{...styles.description, top: top - 29}}>
           <Text style={styles.textDescription}>{details}</Text>
         </View>
       </View>
@@ -84,6 +97,7 @@ export const PokemonDetailScreen = ({route}: Props) => {
       ) : (
         <PokemonDetails pokemon={pokemon} evolutions={evolutions} />
       )}
+      </ScrollView>
     </SafeAreaView>
   );
 };

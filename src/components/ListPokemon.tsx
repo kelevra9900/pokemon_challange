@@ -1,21 +1,29 @@
 import React from 'react';
 import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import {Pokemon} from '../interfaces/index';
 
 type Props = {
   pokemon: Pokemon;
 };
+
+type StackParam = {
+  Pokemon: { simplePokemon: Pokemon, color: string };
+}
+
+type NavigationProps = StackNavigationProp<StackParam>
+
 export const ListPokemon = ({pokemon}: Props) => {
-  const navigation: any = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
 
   const capitalize = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
   const zeroFilled = (value: string) => {
-    var zeroes = new Array(3).join('0');
+    const zeroes = new Array(3).join('0');
     return (zeroes + value).slice(-3);
   };
 
